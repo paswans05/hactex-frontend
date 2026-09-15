@@ -87,3 +87,10 @@ for (const [path, loader] of Object.entries(modules)) {
     pageBySlug.set('auth/sign-up-basic', comp);
   }
 }
+
+// Map root dashboard aliases to the main Sales dashboard
+const salesComp = pageBySlug.get('dashboards/sales');
+if (salesComp) {
+  pageBySlug.set('dashboard', salesComp);
+  pageBySlug.set('dashboards', salesComp);
+}

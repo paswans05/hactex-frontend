@@ -3,10 +3,10 @@
  * Connected to Flask + MySQL backend API with token authentication.
  * <BareShell> provides the loader, theme toggle and home link.
  */
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthBrand, PasswordField, SocialRow } from '../../components/auth/AuthParts';
-import { register } from '../../lib/auth';
+import { register, isAuthenticated } from '../../lib/auth';
 
 export const SLUG = 'auth/register';
 
@@ -17,6 +17,12 @@ export default function SignUpBasic(): React.JSX.Element {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (isAuthenticated()) {
+      navigate('/dashboards/sales', { replace: true });
+    }
+  }, [navigate]);
 
   const submit = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault();

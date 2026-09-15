@@ -7,7 +7,7 @@
  * Rendered as a layout route: children render inside <main>.
  */
 import { useEffect, useState } from 'react';
-import { Outlet, useLocation } from 'react-router-dom';
+import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { Loader } from './Loader';
 import { Sidebar } from './Sidebar';
 import { Header } from './Header';
@@ -16,11 +16,30 @@ import { Customizer } from './Customizer';
 import { CommandPalette } from './CommandPalette';
 import { slugFromPath } from '../../lib/manifest';
 import { closeDrawer } from '../../lib/sidebar';
+import { isAuthenticated, clearAuth } from '../../lib/auth';
 
 export function Layout(): React.JSX.Element {
   const location = useLocation();
+  const navigate = useNavigate();
   const [commandOpen, setCommandOpen] = useState(false);
   const [customizerOpen, setCustomizerOpen] = useState(false);
+
+  // Authentication guard: redirect to /auth/login if not authenticated
+  useEffect(() => {
+    if (!isAuthenticated()) {
+      navigate('/auth/login', { replace: true, state: { from: location.pathname } });
+    }
+  }, [location.pathname, navigate]);
+
+  // Listen for unauthorized events
+  useEffect(() => {
+    const handleUnauthorized = (): void => {
+      clearAuth();
+      navigate('/auth/login', { replace: true });
+    };
+    window.addEventListener('at:auth-unauthorized', handleUnauthorized);
+    return () => window.removeEventListener('at:auth-unauthorized', handleUnauthorized);
+  }, [navigate]);
 
   // keep <html data-at-route> in sync, and dismiss the mobile drawer — tapping a
   // nav item is a client-side navigation, so nothing would otherwise close it.

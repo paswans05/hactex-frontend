@@ -6,6 +6,7 @@
  */
 import { PageHead } from '../../components/shell/PageHead';
 import { ApexChart } from '../../components/charts/ApexChart';
+import { getUser } from '../../lib/auth';
 
 const KPIS = [
   {
@@ -106,11 +107,25 @@ const TXNS = [
 export const SLUG = 'dashboards/sales';
 
 export default function Sales(): React.JSX.Element {
+  const user = getUser();
+  const userName = user?.name || 'Administrator';
+  const roleName = user?.role || 'Admin';
+
   return (
     <>
       <PageHead
-        title="Sales"
-        subtitle="Here's how revenue is tracking — Jul 2025 to Jun 2026."
+        title={
+          <span style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+            <span>Sales Dashboard</span>
+            <span className="at-badge at-badge--accent" style={{ fontSize: '11px', textTransform: 'uppercase' }}>
+              {roleName}
+            </span>
+            <span className="at-badge at-badge--success" style={{ fontSize: '11px' }}>
+              ● Authenticated
+            </span>
+          </span>
+        }
+        subtitle={`Welcome back, ${userName}. Here is your live operations and revenue overview.`}
         actions={
           <>
             <button className="at-btn at-btn--outline at-press">Export</button>

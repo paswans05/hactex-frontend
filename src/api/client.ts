@@ -3,6 +3,7 @@
  * Provides centralized error handling, bearer token injection, and typed responses.
  */
 import { ApiResponse } from './types';
+import { getCookie } from '../lib/cookies';
 
 export class ApiError extends Error {
   status: number;
@@ -34,6 +35,8 @@ class ApiClient {
 
   private getToken(): string | null {
     try {
+      const cookieToken = getCookie('hactex_token');
+      if (cookieToken) return cookieToken;
       return localStorage.getItem('at:auth_token');
     } catch {
       return null;
@@ -78,6 +81,7 @@ class ApiClient {
 
     try {
       const response = await fetch(url, {
+        credentials: 'include',
         headers: requestHeaders,
         ...customConfig,
       });

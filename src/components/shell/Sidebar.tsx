@@ -277,9 +277,9 @@ export function Sidebar(): React.JSX.Element {
           {(currentUser?.name || 'A')[0].toUpperCase()}
         </div>
         <div className="at-sidebar__user-info">
-          <div className="at-sidebar__user-name">{currentUser?.name || 'Alex Morgan'}</div>
+          <div className="at-sidebar__user-name">{currentUser?.name || 'Administrator'}</div>
           <div className="at-sidebar__user-email">
-            {currentUser?.email || (currentUser?.username ? `${currentUser.username}@hactex.ai` : 'user@hactex.ai')}
+            {currentUser?.email || (currentUser?.username ? `${currentUser.username}@hactex.ai` : 'admin@hactex.ai')}
           </div>
         </div>
         <Link to="/auth/login" onClick={() => clearAuth()} className="at-icon-btn" aria-label="Sign out">

@@ -271,9 +271,18 @@ export function Header({ onCommand, onCustomizer }: HeaderProps): React.JSX.Elem
           {() => (
             <div style={{ minWidth: 220 }}>
               <div style={{ padding: 'var(--at-space-3)', borderBlockEnd: '1px solid var(--at-border)' }}>
-                <div style={{ fontWeight: 700, color: 'var(--at-text-strong)' }}>{currentUser?.name || 'Alex Morgan'}</div>
-                <div style={{ fontSize: 'var(--at-text-xs)', color: 'var(--at-text-muted)' }}>
-                  {currentUser?.email || (currentUser?.username ? `${currentUser.username}@hactex.ai` : 'user@hactex.ai')}
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '8px' }}>
+                  <div style={{ fontWeight: 700, color: 'var(--at-text-strong)' }}>{currentUser?.name || 'Administrator'}</div>
+                  <span className="at-badge at-badge--accent" style={{ fontSize: '10px', textTransform: 'uppercase' }}>
+                    {currentUser?.role || 'Admin'}
+                  </span>
+                </div>
+                <div style={{ fontSize: 'var(--at-text-xs)', color: 'var(--at-text-muted)', marginTop: '2px' }}>
+                  {currentUser?.email || (currentUser?.username ? `${currentUser.username}@hactex.ai` : 'admin@hactex.ai')}
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginTop: '6px', fontSize: '11px', color: 'var(--at-success)' }}>
+                  <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: 'currentColor' }}></span>
+                  <span>Authenticated Session</span>
                 </div>
               </div>
               <Link className="at-dropdown__item" to={hrefForSlug('pages/profile')}>Profile</Link>
