@@ -3,7 +3,6 @@
  * Used at the top of every in-shell page. Port of the .at-page-head block.
  */
 import { type ReactNode } from 'react';
-import { Breadcrumb } from './Breadcrumb';
 
 export interface PageHeadProps {
   title: ReactNode;
@@ -16,7 +15,6 @@ export function PageHead({ title, subtitle, actions }: PageHeadProps): React.JSX
     <div className="at-page-head">
       <div className="at-page-head__row">
         <div>
-          <Breadcrumb />
           <h1 className="at-page-head__title">{title}</h1>
           {subtitle && <p className="at-page-head__subtitle">{subtitle}</p>}
         </div>

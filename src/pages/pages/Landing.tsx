@@ -7,6 +7,7 @@
  * into consts.
  */
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { PageHead } from '../../components/shell/PageHead';
 import { ApexChart } from '../../components/charts/ApexChart';
 
@@ -63,7 +64,7 @@ export default function Landing(): React.JSX.Element {
 
   return (
     <>
-      <PageHead title="Landing" />
+      <PageHead title="Hactex" />
 
       {/* HERO */}
       <section
@@ -102,8 +103,12 @@ export default function Landing(): React.JSX.Element {
           system — light, dark and six accent presets, all out of the box.
         </p>
         <div className="at-cluster" style={{ gap: 'var(--at-space-3)', justifyContent: 'center' }}>
-          <button className="at-btn at-btn--primary at-btn--lg at-press">Start free trial →</button>
-          <button className="at-btn at-btn--outline at-btn--lg at-press">▶ Live demo</button>
+          <Link to="/dashboards/sales" className="at-btn at-btn--primary at-btn--lg at-press" style={{ textDecoration: 'none' }}>
+            Start free trial →
+          </Link>
+          <Link to="/dashboards/sales" className="at-btn at-btn--outline at-btn--lg at-press" style={{ textDecoration: 'none' }}>
+            ▶ Live demo
+          </Link>
         </div>
         <p
           className="at-text-muted at-num"
@@ -523,21 +528,24 @@ export default function Landing(): React.JSX.Element {
           <div className="at-cluster" style={{ gap: 'var(--at-space-3)', justifyContent: 'center' }}>
             {/* On an accent panel the dark button re-inks its offset block,
                 same reason as .at-sidebar__cta — see components.css §1. */}
-            <button
+            <Link
+              to="/dashboards/sales"
               className="at-btn at-btn--dark at-btn--lg at-press"
-              style={{ '--at-shadow-color': 'var(--at-on-accent)' } as React.CSSProperties}
+              style={{ '--at-shadow-color': 'var(--at-on-accent)', textDecoration: 'none' } as React.CSSProperties}
             >
               Get started free
-            </button>
-            <button
+            </Link>
+            <Link
+              to="/dashboards/sales"
               className="at-btn at-btn--lg at-press"
               style={{
                 background: 'color-mix(in oklab, var(--at-on-accent) 16%, transparent)',
                 color: 'var(--at-on-accent)',
+                textDecoration: 'none',
               }}
             >
               View live demo
-            </button>
+            </Link>
           </div>
         </div>
       </section>

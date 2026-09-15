@@ -33,7 +33,7 @@ export interface ManifestData {
 
 const data = raw as unknown as ManifestData;
 export const SECTIONS = data.meta.sections;
-export const DEFAULT_SLUG = 'dashboards/sales';
+export const DEFAULT_SLUG = 'pages/landing';
 
 export interface ManifestIndex {
   byId: Record<string, ManifestNode>;

@@ -19,6 +19,7 @@ import { CustomizerProvider } from './context/CustomizerContext';
 import { Layout } from './components/shell/Layout';
 import { AppShell } from './components/shell/AppShell';
 import { BareShell } from './components/shell/BareShell';
+import { LandingShell } from './components/shell/LandingShell';
 import { pageBySlug } from './pages/pageRegistry';
 import { DEFAULT_SLUG } from './lib/manifest';
 
@@ -45,6 +46,7 @@ function Page(): React.JSX.Element {
 function Shell(): React.JSX.Element {
   const { pathname } = useLocation();
   const slug = pathnameToSlug(pathname);
+  if (slug === 'pages/landing') return <LandingShell />;
   if (slug.startsWith('apps/')) return <AppShell />;
   if (slug.startsWith('auth/') || slug.startsWith('error/')) return <BareShell />;
   return <Layout />;
@@ -71,6 +73,6 @@ export function App(): React.JSX.Element {
 /** Normalize a pathname to a manifest slug. */
 function pathnameToSlug(pathname: string): string {
   const slug = pathname.replace(/^\/+|\/+$/g, '');
-  if (!slug || slug === 'index') return DEFAULT_SLUG;
+  if (!slug || slug === 'index' || slug === 'landing') return DEFAULT_SLUG;
   return slug;
 }
