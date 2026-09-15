@@ -8,7 +8,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthBrand, PasswordField, SocialRow } from '../../components/auth/AuthParts';
 
-export const SLUG = 'auth/sign-up-basic';
+export const SLUG = 'auth/register';
 
 export default function SignUpBasic(): React.JSX.Element {
   const [name, setName] = useState('');
