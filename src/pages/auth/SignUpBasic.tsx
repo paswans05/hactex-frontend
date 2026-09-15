@@ -1,30 +1,40 @@
 /*
  * Hactex React — Sign Up (standalone, no app shell).
- * Demo submit flashes an error and
- * never hits the network. <BareShell> provides the loader, theme toggle and
- * home link.
+ * Connected to Flask + MySQL backend API with token authentication.
+ * <BareShell> provides the loader, theme toggle and home link.
  */
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthBrand, PasswordField, SocialRow } from '../../components/auth/AuthParts';
+import { register } from '../../lib/auth';
 
 export const SLUG = 'auth/register';
 
 export default function SignUpBasic(): React.JSX.Element {
+  const navigate = useNavigate();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const submit = (e: React.FormEvent): void => {
+  const submit = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault();
     setError('');
     setLoading(true);
-    window.setTimeout(() => {
+
+    try {
+      const res = await register(name, email, password);
+      if (res.success) {
+        navigate('/dashboards/sales', { replace: true });
+      } else {
+        setError(res.error || 'Failed to create account.');
+      }
+    } catch {
+      setError('An unexpected error occurred. Please try again.');
+    } finally {
       setLoading(false);
-      setError('Sign-up is disabled in this demo.');
-    }, 900);
+    }
   };
 
   return (
@@ -33,7 +43,7 @@ export default function SignUpBasic(): React.JSX.Element {
 
       <div className="at-auth__head">
         <h1 className="at-auth__title">Create account</h1>
-        <p className="at-auth__sub">Start your 14-day trial. No card required.</p>
+        <p className="at-auth__sub">Join Hactex to manage your hatchery and poultry farm.</p>
       </div>
 
       {error && (
@@ -51,7 +61,7 @@ export default function SignUpBasic(): React.JSX.Element {
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            placeholder="Alex Morgan"
+            placeholder="John Doe"
             autoComplete="name"
             required
           />
@@ -65,7 +75,7 @@ export default function SignUpBasic(): React.JSX.Element {
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="alex@atelier.co"
+            placeholder="farmer@hactex.ai"
             autoComplete="email"
             required
           />
@@ -77,18 +87,18 @@ export default function SignUpBasic(): React.JSX.Element {
           value={password}
           onChange={setPassword}
           autoComplete="new-password"
-          minLength={8}
-          hint="At least 8 characters, including a number."
+          minLength={6}
+          hint="At least 6 characters."
         />
 
         <div className="at-auth__options">
           <label className="at-check">
-            <input type="checkbox" required /> I agree to the <a href="#">Terms</a>
+            <input type="checkbox" required defaultChecked /> I agree to the <Link to="/pages/terms">Terms & Conditions</Link>
           </label>
         </div>
 
         <button type="submit" className="at-btn at-btn--primary at-btn--block at-btn--lg at-press" disabled={loading}>
-          {loading ? 'Creating…' : 'Create Account'}
+          {loading ? 'Creating account…' : 'Create Account'}
         </button>
       </form>
 

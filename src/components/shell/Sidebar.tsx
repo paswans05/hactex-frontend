@@ -5,9 +5,10 @@
  * preserving the reference's class names + ARIA. Group expand state is local
  * React state, seeded open along the active route's trail (mirrors nav.js).
  */
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useState, useMemo, useRef, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { buildNav, CARET_SVG } from '../../lib/nav';
+import { getUser, clearAuth } from '../../lib/auth';
 import {
   childrenOf,
   hrefForSlug,
@@ -30,6 +31,13 @@ export function Sidebar(): React.JSX.Element {
   const { pathname } = useLocation();
   const nav = useMemo(() => buildNav(), []);
   const activeSlug = nodeForPath(pathname)?.slug ?? '';
+  const [currentUser, setCurrentUser] = useState(getUser());
+
+  useEffect(() => {
+    const onAuth = (): void => setCurrentUser(getUser());
+    window.addEventListener('at:auth-change', onAuth);
+    return () => window.removeEventListener('at:auth-change', onAuth);
+  }, []);
 
   /* The groups on the active route's trail. This is ROUTE state, kept separate
      from the expand state below on purpose: the rail paints the group icon for
@@ -265,12 +273,16 @@ export function Sidebar(): React.JSX.Element {
 
       {/* User */}
       <div className="at-sidebar__user">
-        <div className="at-avatar at-avatar--sm">A</div>
-        <div className="at-sidebar__user-info">
-          <div className="at-sidebar__user-name">Alex Morgan</div>
-          <div className="at-sidebar__user-email">alex@atelier.co</div>
+        <div className="at-avatar at-avatar--sm">
+          {(currentUser?.name || 'A')[0].toUpperCase()}
         </div>
-        <Link to="/auth/login" className="at-icon-btn" aria-label="Sign out">
+        <div className="at-sidebar__user-info">
+          <div className="at-sidebar__user-name">{currentUser?.name || 'Alex Morgan'}</div>
+          <div className="at-sidebar__user-email">
+            {currentUser?.email || (currentUser?.username ? `${currentUser.username}@hactex.ai` : 'user@hactex.ai')}
+          </div>
+        </div>
+        <Link to="/auth/login" onClick={() => clearAuth()} className="at-icon-btn" aria-label="Sign out">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ width: 16, height: 16 }}>
             <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
             <polyline points="16 17 21 12 16 7" />

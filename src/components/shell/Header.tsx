@@ -8,6 +8,8 @@ import { useCustomizer } from '../../context/CustomizerContext';
 import { hrefForSlug } from '../../lib/manifest';
 import { toggleSidebar } from '../../lib/sidebar';
 import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { getUser, clearAuth } from '../../lib/auth';
 
 export interface HeaderProps {
   onCommand: () => void;
@@ -16,6 +18,13 @@ export interface HeaderProps {
 
 export function Header({ onCommand, onCustomizer }: HeaderProps): React.JSX.Element {
   const c = useCustomizer();
+  const [currentUser, setCurrentUser] = useState(getUser());
+
+  useEffect(() => {
+    const onAuth = (): void => setCurrentUser(getUser());
+    window.addEventListener('at:auth-change', onAuth);
+    return () => window.removeEventListener('at:auth-change', onAuth);
+  }, []);
 
   const toggleFullscreen = (): void => {
     if (document.fullscreenElement) void document.exitFullscreen();
@@ -249,8 +258,10 @@ export function Header({ onCommand, onCustomizer }: HeaderProps): React.JSX.Elem
           placement="bottom"
           trigger={() => (
             <>
-              <div className="at-avatar at-avatar--sm">A</div>
-              <span className="at-header__user-name">Alex Morgan</span>
+              <div className="at-avatar at-avatar--sm">
+                {(currentUser?.name || 'A')[0].toUpperCase()}
+              </div>
+              <span className="at-header__user-name">{currentUser?.name || 'Alex Morgan'}</span>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ width: 14, height: 14 }}>
                 <polyline points="6 9 12 15 18 9" />
               </svg>
@@ -260,12 +271,14 @@ export function Header({ onCommand, onCustomizer }: HeaderProps): React.JSX.Elem
           {() => (
             <div style={{ minWidth: 220 }}>
               <div style={{ padding: 'var(--at-space-3)', borderBlockEnd: '1px solid var(--at-border)' }}>
-                <div style={{ fontWeight: 700, color: 'var(--at-text-strong)' }}>Alex Morgan</div>
-                <div style={{ fontSize: 'var(--at-text-xs)', color: 'var(--at-text-muted)' }}>alex@atelier.co</div>
+                <div style={{ fontWeight: 700, color: 'var(--at-text-strong)' }}>{currentUser?.name || 'Alex Morgan'}</div>
+                <div style={{ fontSize: 'var(--at-text-xs)', color: 'var(--at-text-muted)' }}>
+                  {currentUser?.email || (currentUser?.username ? `${currentUser.username}@hactex.ai` : 'user@hactex.ai')}
+                </div>
               </div>
               <Link className="at-dropdown__item" to={hrefForSlug('pages/profile')}>Profile</Link>
               <Link className="at-dropdown__item" to={hrefForSlug('pages/settings')}>Settings</Link>
-              <Link className="at-dropdown__item" to={hrefForSlug('auth/login')}>Sign out</Link>
+              <Link className="at-dropdown__item" to="/auth/login" onClick={() => clearAuth()}>Sign out</Link>
             </div>
           )}
         </Dropdown>

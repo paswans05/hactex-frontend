@@ -1,29 +1,39 @@
 /*
  * Hactex React — Sign In (standalone, no app shell).
- * Demo submit flashes an
- * "incorrect credentials" alert; never hits the network.
+ * Connected to Flask + MySQL backend API with token authentication.
  * <BareShell> provides the loader, theme toggle and home link.
  */
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthBrand, PasswordField, SocialRow } from '../../components/auth/AuthParts';
+import { login } from '../../lib/auth';
 
 export const SLUG = 'auth/login';
 
 export default function SignInBasic(): React.JSX.Element {
-  const [email, setEmail] = useState('alex@atelier.co');
+  const navigate = useNavigate();
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const submit = (e: React.FormEvent): void => {
+  const submit = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault();
     setError('');
     setLoading(true);
-    window.setTimeout(() => {
+
+    try {
+      const res = await login(email, password);
+      if (res.success) {
+        navigate('/dashboards/sales', { replace: true });
+      } else {
+        setError(res.error || 'Invalid email/username or password.');
+      }
+    } catch {
+      setError('An unexpected error occurred. Please try again.');
+    } finally {
       setLoading(false);
-      setError('Incorrect email or password. (demo)');
-    }, 900);
+    }
   };
 
   return (
@@ -43,15 +53,15 @@ export default function SignInBasic(): React.JSX.Element {
 
       <form className="at-auth__form" onSubmit={submit}>
         <div>
-          <label className="at-form-label" htmlFor="email">Email</label>
+          <label className="at-form-label" htmlFor="email">Email or Username</label>
           <input
             className="at-input"
             id="email"
-            type="email"
+            type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="alex@atelier.co"
-            autoComplete="email"
+            placeholder="farmer@hactex.ai or admin"
+            autoComplete="username"
             required
           />
         </div>
@@ -65,7 +75,7 @@ export default function SignInBasic(): React.JSX.Element {
         />
 
         <div className="at-auth__options">
-          <label className="at-check"><input type="checkbox" /> Keep me signed in</label>
+          <label className="at-check"><input type="checkbox" defaultChecked /> Keep me signed in</label>
         </div>
 
         <button type="submit" className="at-btn at-btn--primary at-btn--block at-btn--lg at-press" disabled={loading}>
