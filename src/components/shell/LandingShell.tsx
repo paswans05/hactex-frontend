@@ -1,12 +1,11 @@
 /*
  * Hactex React — Landing page standalone shell.
  * Renders the landing page without the admin sidebar or top header bar.
- * Provides a subtle floating control for theme toggling and navigating to the dashboard.
+ * Includes subtle floating controls and the Hactex.ai footer.
  */
 import { useEffect, useState } from 'react';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import { Loader } from './Loader';
-import { Footer } from './Footer';
 import { slugFromPath } from '../../lib/manifest';
 import * as theme from '../../lib/theme';
 
@@ -16,7 +15,7 @@ export function LandingShell(): React.JSX.Element {
 
   useEffect(() => {
     document.documentElement.setAttribute('data-at-route', slugFromPath(location.pathname));
-    document.title = 'Hactex — Operating Platform for Hatcheries and Poultry Farms';
+    document.title = 'Hactex.ai — The Digital Operating Platform for Hatcheries & Poultry Farms';
   }, [location.pathname]);
 
   useEffect(() => {
@@ -122,7 +121,134 @@ export function LandingShell(): React.JSX.Element {
         >
           <Outlet />
         </main>
-        <Footer />
+
+        {/* Hactex.ai Footer */}
+        <footer
+          style={{
+            borderTop: 'var(--at-border-w-sm) solid var(--at-border)',
+            background: 'var(--at-surface)',
+            padding: 'var(--at-space-8) var(--at-space-6)',
+          }}
+        >
+          <div
+            style={{
+              maxWidth: '1200px',
+              margin: '0 auto',
+              display: 'flex',
+              flexWrap: 'wrap',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              gap: 'var(--at-space-4)',
+            }}
+          >
+            <div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--at-space-2)' }}>
+                <span className="at-sidebar__stamp" aria-hidden="true" style={{ width: '22px', height: '22px' }}>
+
+                  <svg
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    {/* Egg */}
+                    <path
+                      d="M16 3.5
+         C10.2 3.5 6 9.6 6 16.8
+         C6 23.5 10.2 28.5 16 28.5
+         C21.8 28.5 26 23.5 26 16.8
+         C26 9.6 21.8 3.5 16 3.5Z"
+                      fill="currentColor"
+                    />
+
+                    {/* Egg hatch / technology cut */}
+                    <path
+                      d="M7.2 18.2
+         C10.5 15.2 14.2 14.4 18 13
+         C21 11.9 23.2 10.5 24.8 9"
+                      stroke="var(--egg-cut, #2b2119)"
+                      strokeWidth="2.2"
+                      strokeLinecap="round"
+                    />
+                  </svg>
+
+                </span>
+                <span
+                  style={{
+                    fontFamily: 'var(--at-font-display)',
+                    fontSize: 'var(--at-text-lg)',
+                    fontWeight: 'var(--at-weight-bold)',
+                    color: 'var(--at-text-strong)',
+                  }}
+                >
+                  HACTEX.ai
+                </span>
+              </div>
+              <p
+                className="at-text-muted"
+                style={{
+                  margin: 'var(--at-space-1) 0 0',
+                  fontSize: 'var(--at-text-sm)',
+                }}
+              >
+                The Digital Operating Platform for Poultry.
+              </p>
+            </div>
+
+            <nav
+              className="at-cluster"
+              style={{
+                gap: 'var(--at-space-3) var(--at-space-5)',
+                flexWrap: 'wrap',
+                fontSize: 'var(--at-text-sm)',
+              }}
+            >
+              <Link to="/dashboards/sales" className="at-text-muted" style={{ textDecoration: 'none' }}>
+                Platform
+              </Link>
+              <Link to="/dashboards/sales" className="at-text-muted" style={{ textDecoration: 'none' }}>
+                Hatchery
+              </Link>
+              <Link to="/dashboards/sales" className="at-text-muted" style={{ textDecoration: 'none' }}>
+                Poultry Farm
+              </Link>
+              <a href="#features" className="at-text-muted" style={{ textDecoration: 'none' }}>
+                Features
+              </a>
+              <Link to="/dashboards/sales" className="at-text-muted" style={{ textDecoration: 'none' }}>
+                Reports
+              </Link>
+              <Link to="/pages/starter" className="at-text-muted" style={{ textDecoration: 'none' }}>
+                About
+              </Link>
+              <Link to="/pages/starter" className="at-text-muted" style={{ textDecoration: 'none' }}>
+                Contact
+              </Link>
+              <Link to="/pages/terms" className="at-text-muted" style={{ textDecoration: 'none' }}>
+                Privacy Policy
+              </Link>
+              <Link to="/pages/terms" className="at-text-muted" style={{ textDecoration: 'none' }}>
+                Terms
+              </Link>
+            </nav>
+          </div>
+          <div
+            style={{
+              maxWidth: '1200px',
+              margin: 'var(--at-space-4) auto 0',
+              paddingTop: 'var(--at-space-3)',
+              borderTop: 'var(--at-border-w-sm) solid color-mix(in oklab, var(--at-border) 60%, transparent)',
+              fontSize: 'var(--at-text-xs)',
+              color: 'var(--at-text-muted)',
+              display: 'flex',
+              justifyContent: 'space-between',
+              flexWrap: 'wrap',
+              gap: 'var(--at-space-2)',
+            }}
+          >
+            <span>© {new Date().getFullYear()} HACTEX.ai. All rights reserved.</span>
+            {/* <span>Operating Platform for Hatcheries & Poultry Farms</span> */}
+          </div>
+        </footer>
       </div>
     </>
   );

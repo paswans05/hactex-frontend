@@ -48,9 +48,30 @@ export function AppShell(): React.JSX.Element {
       <header className="at-appbar">
         <Link to="/" className="at-appbar__brand" aria-label="Hactex home">
           <span className="at-sidebar__stamp" aria-hidden="true">
-            <svg viewBox="0 0 32 32" fill="currentColor">
-              <path d="M8 8h16v16H8z" fill="none" stroke="currentColor" strokeWidth="2.5" />
-              <path d="M12 12h8v8H12z" />
+            <svg
+              viewBox="0 0 32 32"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              {/* Egg */}
+              <path
+                d="M16 3.5
+         C10.2 3.5 6 9.6 6 16.8
+         C6 23.5 10.2 28.5 16 28.5
+         C21.8 28.5 26 23.5 26 16.8
+         C26 9.6 21.8 3.5 16 3.5Z"
+                fill="currentColor"
+              />
+
+              {/* Egg hatch / technology cut */}
+              <path
+                d="M7.2 18.2
+         C10.5 15.2 14.2 14.4 18 13
+         C21 11.9 23.2 10.5 24.8 9"
+                stroke="var(--egg-cut, #2b2119)"
+                strokeWidth="2.2"
+                strokeLinecap="round"
+              />
             </svg>
           </span>
           <span>Hactex</span>

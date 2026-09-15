@@ -1,10 +1,7 @@
 /*
- * Hactex React — Landing (marketing) page.
- * Built with the shared component classes, inline token
- * styles, and demo copy. Mostly static markup; the FAQ accordion
- * is useState-driven. Charts use <ApexChart>;
- * the two embedded bar charts become typed props. Stats + FAQ items extracted
- * into consts.
+ * Hactex React — Landing page.
+ * Digital operating platform for hatcheries and poultry farms.
+ * Built with the shared component classes, inline token styles, and poultry domain copy.
  */
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -12,50 +9,53 @@ import { PageHead } from '../../components/shell/PageHead';
 import { ApexChart } from '../../components/charts/ApexChart';
 
 const MOCK_KPIS = [
-  { label: 'Revenue', value: '$748K' },
-  { label: 'Customers', value: '3,920' },
-  { label: 'Orders', value: '9,812' },
-  { label: 'Refunds', value: '1.2%' },
+  { label: 'Eggs Set', value: '148,200' },
+  { label: 'Hatchability', value: '88.4%' },
+  { label: 'Chicks Sold', value: '131,010' },
+  { label: 'Flock HDP', value: '91.2%' },
 ];
 
-const HERO_REVENUE_SERIES = [{ name: 'Revenue', data: [44, 55, 41, 67, 52, 72, 58] }];
+const HERO_REVENUE_SERIES = [{ name: 'Chicks Hatched', data: [18400, 22100, 19500, 26800, 21400, 28900, 23910] }];
 const HERO_REVENUE_CATEGORIES = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 
-const FEATURE_ACTIVE_SERIES = [{ name: 'Active', data: [44, 55, 41, 67, 52, 72, 58] }];
-const FEATURE_ACTIVE_CATEGORIES = ['W1', 'W2', 'W3', 'W4', 'W5', 'W6', 'W7'];
+const FEATURE_ACTIVE_SERIES = [{ name: 'Hatchability %', data: [85, 87, 86, 88, 89, 90, 88] }];
+const FEATURE_ACTIVE_CATEGORIES = ['Batch 1', 'Batch 2', 'Batch 3', 'Batch 4', 'Batch 5', 'Batch 6', 'Batch 7'];
 
-const ACCENTS = [
-  '--at-chart-1',
-  '--at-chart-2',
-  '--at-chart-3',
-  '--at-chart-4',
-  '--at-chart-5',
-  '--at-chart-6',
+const MODULE_PILLS = [
+  'Hatchery Operations',
+  'Poultry Farm Management',
+  'Flock Management',
+  'Inventory & Stock',
+  'Chick Sales',
+  'Dispatch & Trips',
+  'Feed Management',
+  'Expenses & Finance',
+  'Reports & Analytics',
 ];
 
 const STATS = [
-  { value: '210+', label: 'pre-built pages' },
-  { value: '12', label: 'color schemes' },
-  { value: '6', label: 'accent presets' },
-  { value: '100', label: 'Lighthouse a11y' },
+  { value: 'Unified', label: 'hatchery & farm operations' },
+  { value: '6+', label: 'core operational modules' },
+  { value: '1-click', label: 'batch & hatch reports' },
+  { value: '24/7', label: 'flock & logistics visibility' },
 ];
 
 const FAQS: { q: string; a: string }[] = [
   {
-    q: 'Is Hactex a one-time purchase?',
-    a: 'Yes — a single license gives you every dashboard, app and page, plus 12 months of updates. Renew at a discount to keep receiving new releases.',
+    q: 'How does Hactex connect hatcheries and poultry farms?',
+    a: 'Hactex unifies daily egg collections from parent stock farms with cold-room warehousing, dispatch challans, incubation setting, candling, and day-21 chick hatching in one connected digital platform.',
   },
   {
-    q: 'Can I use it for client projects?',
-    a: 'The Extended license covers unlimited end-products for clients. The Standard license is for a single internal application.',
+    q: 'Can Hactex replace our Excel sheets and paper registers?',
+    a: 'Yes. Hactex replaces paper registers, spreadsheets, and disconnected records with structured daily logs for bird headcounts, mortality, feed intake, egg grading, chick sales, and delivery trips.',
   },
   {
-    q: 'Do you provide Figma source files?',
-    a: 'Pro and Business plans include the full Figma design system with every component, token and icon — kept in sync with each release.',
+    q: 'How does chick sales and dispatch management work?',
+    a: 'Manage chick parties, sales orders, delivery challans, transit mortality deductions, and customer returns, alongside vehicle odometer readings and trip expenses with complete visibility.',
   },
   {
-    q: "What's your refund policy?",
-    a: "If Hactex isn't right for you, request a full refund within 14 days — no questions asked. We'll process it within 5–10 business days.",
+    q: 'What kind of reports and analytics does Hactex provide?',
+    a: 'Generate daily and weekly flock performance summaries, Hen-Housed Hatching Egg (HHHE) curves, Ross/Cobb genetic breed comparisons, monthly feed reconciliations, and 1-click landscape hatch batch reports.',
   },
 ];
 
@@ -64,7 +64,7 @@ export default function Landing(): React.JSX.Element {
 
   return (
     <>
-      <PageHead title="Hactex" />
+      <PageHead title="HACTEX.ai" />
 
       {/* HERO */}
       <section
@@ -78,7 +78,7 @@ export default function Landing(): React.JSX.Element {
         }}
       >
         <span className="at-badge at-badge--accent">
-          <span className="at-badge__dot"></span>Hactex 2.4 is live
+          <span className="at-badge__dot"></span>The digital operating platform for hatcheries and poultry farms
         </span>
         <h1
           style={{
@@ -92,29 +92,28 @@ export default function Landing(): React.JSX.Element {
             color: 'var(--at-text-strong)',
           }}
         >
-          The admin dashboard your team will{' '}
-          <span style={{ color: 'var(--at-accent-text)' }}>actually use</span>.
+          Run Your Poultry Business{' '}
+          <span style={{ color: 'var(--at-accent-text)' }}>Smarter</span>
         </h1>
         <p
           className="at-text-muted"
           style={{ margin: 0, maxWidth: '54ch', fontSize: 'var(--at-text-md)', lineHeight: 1.6 }}
         >
-          Hactex ships 17 dashboards, 8 web apps and a full eCommerce suite in one Bold Press design
-          system — light, dark and six accent presets, all out of the box.
+          Hactex brings hatcheries and poultry farms together on one intelligent platform—helping you manage operations, automate manual work, track performance, and make better decisions.
         </p>
         <div className="at-cluster" style={{ gap: 'var(--at-space-3)', justifyContent: 'center' }}>
           <Link to="/dashboards/sales" className="at-btn at-btn--primary at-btn--lg at-press" style={{ textDecoration: 'none' }}>
-            Start free trial →
+            Get Started
           </Link>
           <Link to="/dashboards/sales" className="at-btn at-btn--outline at-btn--lg at-press" style={{ textDecoration: 'none' }}>
-            ▶ Live demo
+            Explore Platform
           </Link>
         </div>
         <p
           className="at-text-muted at-num"
           style={{ fontSize: 'var(--at-text-sm)', fontFamily: 'var(--at-font-mono)' }}
         >
-          No card required · 14-day trial · cancel anytime
+          Built for modern hatcheries and poultry farms
         </p>
 
         {/* Product mockup */}
@@ -168,7 +167,7 @@ export default function Landing(): React.JSX.Element {
                 fontFamily: 'var(--at-font-mono)',
               }}
             >
-              app.atelier.co/dashboards/sales
+              hactex.ai/hatchery/dashboard
             </span>
           </div>
           <div style={{ padding: 'var(--at-space-5)', background: 'var(--at-canvas)' }}>
@@ -207,9 +206,9 @@ export default function Landing(): React.JSX.Element {
         </div>
       </section>
 
-      {/* LOGO STRIP */}
+      {/* TRUST / SUPPORTING TEXT */}
       <section
-        aria-label="Trusted by"
+        aria-label="Core modules"
         style={{ paddingBlockEnd: 'var(--at-space-8)', textAlign: 'center' }}
       >
         <p
@@ -221,35 +220,36 @@ export default function Landing(): React.JSX.Element {
             letterSpacing: '0.1em',
           }}
         >
-          Trusted by product teams at
+          Built for modern hatcheries and poultry farms
         </p>
         <div
           className="at-cluster"
           style={{
-            gap: 'var(--at-space-8)',
+            gap: 'var(--at-space-4) var(--at-space-6)',
             justifyContent: 'center',
             flexWrap: 'wrap',
             color: 'var(--at-text-muted)',
             fontFamily: 'var(--at-font-display)',
             fontWeight: 'var(--at-weight-semibold)',
+            fontSize: 'var(--at-text-sm)',
           }}
         >
-          <span className="at-cluster" style={{ gap: 'var(--at-space-2)' }}>◈ Northwind</span>
-          <span className="at-cluster" style={{ gap: 'var(--at-space-2)' }}>◐ Helio</span>
-          <span className="at-cluster" style={{ gap: 'var(--at-space-2)' }}>▲ Vantage</span>
-          <span className="at-cluster" style={{ gap: 'var(--at-space-2)' }}>⬢ Quanta</span>
-          <span className="at-cluster" style={{ gap: 'var(--at-space-2)' }}>◉ Lumen</span>
+          {MODULE_PILLS.map((item) => (
+            <span key={item} className="at-cluster" style={{ gap: 'var(--at-space-2)' }}>
+              ◈ {item}
+            </span>
+          ))}
         </div>
       </section>
 
-      {/* FEATURES */}
+      {/* PROBLEM & SOLUTION */}
       <section id="features" style={{ paddingBlock: 'var(--at-space-10)' }}>
         <div style={{ textAlign: 'center', marginBlockEnd: 'var(--at-space-8)' }}>
           <span
             className="at-eyebrow"
             style={{ display: 'block', marginBlockEnd: 'var(--at-space-2)' }}
           >
-            Why Hactex
+            Move Beyond Registers & Excel
           </span>
           <h2
             style={{
@@ -261,20 +261,22 @@ export default function Landing(): React.JSX.Element {
               letterSpacing: '-0.015em',
             }}
           >
-            Everything is a token away
+            One Platform for Your Poultry Ecosystem
           </h2>
           <p
             className="at-text-muted"
             style={{
               margin: 'var(--at-space-3) auto 0',
-              maxWidth: '50ch',
+              maxWidth: '56ch',
               fontSize: 'var(--at-text-md)',
+              lineHeight: 1.6,
             }}
           >
-            A single token layer drives every surface — so themes, accents and dark mode just work.
+            Stop managing critical poultry operations through paper registers, spreadsheets, and disconnected systems. From egg grading and hatchery production to chick sales, dispatch, inventory, feed, expenses, and reporting—Hactex gives your team a single source of truth.
           </p>
         </div>
 
+        {/* AUTOMATION SECTION */}
         <div
           className="at-row"
           style={{
@@ -303,14 +305,13 @@ export default function Landing(): React.JSX.Element {
                 color: 'var(--at-text-strong)',
               }}
             >
-              17 ready-made dashboards
+              Automate Your Daily Poultry Operations
             </h3>
             <p
               className="at-text-muted"
               style={{ margin: 0, fontSize: 'var(--at-text-md)', lineHeight: 1.6 }}
             >
-              Sales, analytics, CRM, crypto, healthcare, HR and more — each a complete, considered
-              layout you can ship today or remix tomorrow.
+              Reduce repetitive data entry and manual work. Hactex helps your team capture operational data once and use it across workflows, reports, and business decisions.
             </p>
             <ul
               style={{
@@ -323,14 +324,17 @@ export default function Landing(): React.JSX.Element {
               }}
             >
               <li className="at-cluster" style={{ gap: 'var(--at-space-2)', fontSize: 'var(--at-text-sm)' }}>
-                <span style={{ color: 'var(--at-success-text)' }}>✓</span> Real demo data on every screen
+                <span style={{ color: 'var(--at-success-text)' }}>✓</span> <strong>Hatchery Management:</strong> Manage hatchery operations, production, settings, reports, and daily activities from one place.
               </li>
               <li className="at-cluster" style={{ gap: 'var(--at-space-2)', fontSize: 'var(--at-text-sm)' }}>
-                <span style={{ color: 'var(--at-success-text)' }}>✓</span> Charts that retheme automatically
+                <span style={{ color: 'var(--at-success-text)' }}>✓</span> <strong>Farm & Flock Management:</strong> Track poultry farm operations and flock performance across locations.
               </li>
             </ul>
           </div>
           <div className="at-col-6 at-card" style={{ padding: 'var(--at-space-5)' }}>
+            <div className="at-text-muted" style={{ fontSize: 'var(--at-text-xs)', marginBlockEnd: 'var(--at-space-2)' }}>
+              Batch Hatchability Trend (% Set)
+            </div>
             <ApexChart
               type="bar"
               height={220}
@@ -340,42 +344,55 @@ export default function Landing(): React.JSX.Element {
           </div>
         </div>
 
+        {/* ECOSYSTEM & AI SECTION */}
         <div className="at-row" style={{ gap: 'var(--at-space-8)', alignItems: 'center' }}>
           <div className="at-col-6 at-card" style={{ padding: 'var(--at-space-5)' }}>
+            <span
+              className="at-eyebrow"
+              style={{ display: 'block', marginBlockEnd: 'var(--at-space-2)' }}
+            >
+              Connected Poultry Lifecycle
+            </span>
+            <h3
+              style={{
+                margin: '0 0 var(--at-space-2)',
+                fontFamily: 'var(--at-font-display)',
+                fontSize: 'var(--at-text-xl)',
+                fontWeight: 'var(--at-weight-semibold)',
+                color: 'var(--at-text-strong)',
+              }}
+            >
+              From Hatchery to Farm
+            </h3>
             <p
               className="at-text-muted"
-              style={{ margin: '0 0 var(--at-space-3)', fontSize: 'var(--at-text-sm)' }}
+              style={{ margin: '0 0 var(--at-space-4)', fontSize: 'var(--at-text-sm)', lineHeight: 1.6 }}
             >
-              Pick an accent — the whole page rethemes live:
+              Connect the complete poultry lifecycle—from eggs and hatchery production to chicks, farms, feed, inventory, sales, dispatch, and business reporting.
             </p>
             <div
               className="at-cluster"
               style={{ gap: 'var(--at-space-2)', flexWrap: 'wrap' }}
-              role="group"
-              aria-label="Accent preset picker"
             >
-              {ACCENTS.map((c) => (
+              {['Hatchery Production', 'Chick Sales', 'Dispatch & Trips', 'Inventory & Stock', 'Flock Health', 'Reports'].map((m) => (
                 <span
-                  key={c}
-                  style={{
-                    width: '40px',
-                    height: '40px',
-                    borderRadius: 'var(--at-radius-md)',
-                    background: `var(${c})`,
-                    border: 'var(--at-border-w-sm) solid var(--at-border)',
-                  }}
-                ></span>
+                  key={m}
+                  className="at-badge at-badge--accent"
+                  style={{ fontSize: 'var(--at-text-xs)' }}
+                >
+                  {m}
+                </span>
               ))}
             </div>
             <p
               className="at-text-muted at-num"
               style={{
                 margin: 'var(--at-space-4) 0 0',
-                fontSize: 'var(--at-text-sm)',
+                fontSize: 'var(--at-text-xs)',
                 fontFamily: 'var(--at-font-mono)',
               }}
             >
-              6 accent presets · light + dark · WCAG AA
+              Single source of truth across all operations
             </p>
           </div>
           <div className="at-col-6">
@@ -398,21 +415,41 @@ export default function Landing(): React.JSX.Element {
                 color: 'var(--at-text-strong)',
               }}
             >
-              Themeable to the pixel
+              Intelligence for Better Decisions
             </h3>
             <p
               className="at-text-muted"
               style={{ margin: 0, fontSize: 'var(--at-text-md)', lineHeight: 1.6 }}
             >
-              Pick from six curated accents or set your own brand color in the live customizer. Every
-              component, chart and badge follows instantly — no overrides.
+              Use your operational data to understand performance, identify trends, and make faster, data-driven decisions with Hactex intelligence.
             </p>
+            <ul
+              style={{
+                margin: 'var(--at-space-4) 0 0',
+                padding: 0,
+                listStyle: 'none',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: 'var(--at-space-2)',
+              }}
+            >
+              <li className="at-cluster" style={{ gap: 'var(--at-space-2)', fontSize: 'var(--at-text-sm)' }}>
+                <span style={{ color: 'var(--at-success-text)' }}>✓</span> <strong>Chick Sales & Trips:</strong> Manage parties, sales, orders, vehicles, and deliveries with complete visibility.
+              </li>
+              <li className="at-cluster" style={{ gap: 'var(--at-space-2)', fontSize: 'var(--at-text-sm)' }}>
+                <span style={{ color: 'var(--at-success-text)' }}>✓</span> <strong>Inventory Management:</strong> Manage box and tray stock, scrap items, feed, and other operational inventory.
+              </li>
+              <li className="at-cluster" style={{ gap: 'var(--at-space-2)', fontSize: 'var(--at-text-sm)' }}>
+                <span style={{ color: 'var(--at-success-text)' }}>✓</span> <strong>Reports & Analytics:</strong> Turn operational data into clear reports and actionable business insights.
+              </li>
+            </ul>
           </div>
         </div>
       </section>
 
       {/* STATS BAND */}
       <section
+        id="stats"
         aria-label="By the numbers"
         style={{ borderBlock: 'var(--at-border-w-sm) solid var(--at-border)' }}
       >
@@ -513,7 +550,7 @@ export default function Landing(): React.JSX.Element {
               color: 'var(--at-on-accent)',
             }}
           >
-            Start building today
+            Ready to Build a Smarter Poultry Business?
           </h2>
           <p
             style={{
@@ -523,17 +560,15 @@ export default function Landing(): React.JSX.Element {
               opacity: 0.92,
             }}
           >
-            Join thousands of teams shipping beautiful, accessible admin interfaces with Hactex.
+            Bring your hatchery and poultry farm operations into one connected platform.
           </p>
           <div className="at-cluster" style={{ gap: 'var(--at-space-3)', justifyContent: 'center' }}>
-            {/* On an accent panel the dark button re-inks its offset block,
-                same reason as .at-sidebar__cta — see components.css §1. */}
             <Link
               to="/dashboards/sales"
               className="at-btn at-btn--dark at-btn--lg at-press"
               style={{ '--at-shadow-color': 'var(--at-on-accent)', textDecoration: 'none' } as React.CSSProperties}
             >
-              Get started free
+              Get Started with Hactex
             </Link>
             <Link
               to="/dashboards/sales"
@@ -544,7 +579,7 @@ export default function Landing(): React.JSX.Element {
                 textDecoration: 'none',
               }}
             >
-              View live demo
+              Explore Platform
             </Link>
           </div>
         </div>
