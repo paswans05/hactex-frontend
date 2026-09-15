@@ -1172,7 +1172,7 @@
     {
       "id": "auth.sign-in-basic",
       "title": "Sign In",
-      "slug": "auth/sign-in-basic",
+      "slug": "auth/login",
       "icon": "circle",
       "parent": "grp.auth",
       "section": "PAGES",
@@ -1180,7 +1180,8 @@
       "badge": null,
       "keywords": [
         "sign",
-        "in"
+        "in",
+        "login"
       ],
       "inMenu": true,
       "alias": null,
@@ -1189,7 +1190,7 @@
     {
       "id": "auth.sign-up-basic",
       "title": "Sign Up",
-      "slug": "auth/sign-up-basic",
+      "slug": "auth/register",
       "icon": "circle",
       "parent": "grp.auth",
       "section": "PAGES",
@@ -1197,7 +1198,8 @@
       "badge": null,
       "keywords": [
         "sign",
-        "up"
+        "up",
+        "register"
       ],
       "inMenu": true,
       "alias": null,

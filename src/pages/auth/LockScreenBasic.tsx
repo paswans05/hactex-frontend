@@ -63,7 +63,7 @@ export default function LockScreenBasic(): React.JSX.Element {
       </form>
 
       <p className="at-auth__foot">
-        Not you? <Link to="/auth/sign-in-basic" className="at-text-strong">Sign in as someone else</Link>
+        Not you? <Link to="/auth/login" className="at-text-strong">Sign in as someone else</Link>
       </p>
     </div>
   );

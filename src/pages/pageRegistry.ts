@@ -41,6 +41,8 @@ const SLUG_OVERRIDES: Record<string, string> = {
   // so slugFromPath would otherwise skip them — pin their manifest slugs here.
   'Docs.tsx': 'docs',
   'Widgets.tsx': 'widgets',
+  'auth/SignInBasic.tsx': 'auth/login',
+  'auth/SignUpBasic.tsx': 'auth/register',
 };
 
 /** Derive a manifest slug from a page file path. */
@@ -75,8 +77,13 @@ for (const [path, loader] of Object.entries(modules)) {
   if (path.endsWith('pageRegistry.tsx') || path.endsWith('Placeholder.tsx')) continue;
   const slug = slugFromPath(path);
   if (!slug) continue;
-  pageBySlug.set(
-    slug,
-    lazy(() => loader().then((m) => ({ default: m.default }))),
-  );
+  const comp = lazy(() => loader().then((m) => ({ default: m.default })));
+  pageBySlug.set(slug, comp);
+
+  // Keep backward-compatible aliases for legacy routes
+  if (slug === 'auth/login') {
+    pageBySlug.set('auth/sign-in-basic', comp);
+  } else if (slug === 'auth/register') {
+    pageBySlug.set('auth/sign-up-basic', comp);
+  }
 }

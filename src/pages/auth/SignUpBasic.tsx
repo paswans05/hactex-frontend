@@ -8,7 +8,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthBrand, PasswordField, SocialRow } from '../../components/auth/AuthParts';
 
-export const SLUG = 'auth/sign-up-basic';
+export const SLUG = 'auth/register';
 
 export default function SignUpBasic(): React.JSX.Element {
   const [name, setName] = useState('');
@@ -95,7 +95,7 @@ export default function SignUpBasic(): React.JSX.Element {
       <SocialRow caption="or sign up with" />
 
       <p className="at-auth__foot">
-        Already have an account? <Link to="/auth/sign-in-basic" className="at-text-strong">Sign in</Link>
+        Already have an account? <Link to="/auth/login" className="at-text-strong">Sign in</Link>
       </p>
     </div>
   );

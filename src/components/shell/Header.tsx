@@ -265,7 +265,7 @@ export function Header({ onCommand, onCustomizer }: HeaderProps): React.JSX.Elem
               </div>
               <Link className="at-dropdown__item" to={hrefForSlug('pages/profile')}>Profile</Link>
               <Link className="at-dropdown__item" to={hrefForSlug('pages/settings')}>Settings</Link>
-              <Link className="at-dropdown__item" to={hrefForSlug('auth/sign-in-basic')}>Sign out</Link>
+              <Link className="at-dropdown__item" to={hrefForSlug('auth/login')}>Sign out</Link>
             </div>
           )}
         </Dropdown>

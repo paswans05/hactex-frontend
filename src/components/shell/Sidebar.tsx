@@ -270,7 +270,7 @@ export function Sidebar(): React.JSX.Element {
           <div className="at-sidebar__user-name">Alex Morgan</div>
           <div className="at-sidebar__user-email">alex@atelier.co</div>
         </div>
-        <Link to="/auth/sign-in-basic" className="at-icon-btn" aria-label="Sign out">
+        <Link to="/auth/login" className="at-icon-btn" aria-label="Sign out">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ width: 16, height: 16 }}>
             <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
             <polyline points="16 17 21 12 16 7" />

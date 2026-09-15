@@ -66,7 +66,7 @@ export default function ForgotPasswordBasic(): React.JSX.Element {
       </form>
 
       <p className="at-auth__foot">
-        Remembered it? <Link to="/auth/sign-in-basic" className="at-text-strong">Back to sign in</Link>
+        Remembered it? <Link to="/auth/login" className="at-text-strong">Back to sign in</Link>
       </p>
     </div>
   );
