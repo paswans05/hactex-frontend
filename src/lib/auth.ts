@@ -1,18 +1,11 @@
 /*
  * Hactex React — Authentication client & token storage.
- * Manages JWT/timed auth tokens, user persistence, and API communication with Flask backend.
+ * Integrates with unified src/api client and authService.
  */
 
-export interface AuthUser {
-  id: number;
-  name: string;
-  email: string | null;
-  username: string;
-  role: string;
-  active: boolean;
-  is_admin: boolean;
-  hatchery_id: number | null;
-}
+import { authService, ApiError, User, AuthResult } from '../api';
+
+export type AuthUser = User;
 
 export interface AuthResponse {
   success: boolean;
@@ -67,7 +60,7 @@ export function isAuthenticated(): boolean {
 }
 
 /**
- * Fetch wrapper that automatically adds Authorization: Bearer <token>
+ * Direct fetch wrapper that automatically adds Authorization: Bearer <token>
  */
 export async function apiFetch(url: string, options: RequestInit = {}): Promise<Response> {
   const token = getToken();
@@ -88,55 +81,43 @@ export async function apiFetch(url: string, options: RequestInit = {}): Promise<
 }
 
 /**
- * Log in with email or username + password.
+ * Log in with email or username + password using the unified authService.
  */
 export async function login(identifier: string, password: string): Promise<AuthResponse> {
   try {
-    const res = await apiFetch('/api/auth/login', {
-      method: 'POST',
-      body: JSON.stringify({ email: identifier, password }),
-    });
-
-    const data: AuthResponse = await res.json();
-    if (res.ok && data.success && data.token && data.user) {
-      setAuth(data.token, data.user);
-      return data;
-    }
+    const result: AuthResult = await authService.login({ login: identifier, password });
+    setAuth(result.token, result.user);
     return {
-      success: false,
-      error: data.error || 'Invalid email or password.',
+      success: true,
+      token: result.token,
+      user: result.user,
+      message: 'Login successful.',
     };
   } catch (err: any) {
     return {
       success: false,
-      error: 'Unable to connect to the authentication server. Please check your network or server status.',
+      error: err instanceof ApiError ? err.message : (err?.message || 'Invalid email or password.'),
     };
   }
 }
 
 /**
- * Register a new user account.
+ * Register a new user account using the unified authService.
  */
 export async function register(name: string, email: string, password: string): Promise<AuthResponse> {
   try {
-    const res = await apiFetch('/api/auth/register', {
-      method: 'POST',
-      body: JSON.stringify({ name, email, password }),
-    });
-
-    const data: AuthResponse = await res.json();
-    if (res.ok && data.success && data.token && data.user) {
-      setAuth(data.token, data.user);
-      return data;
-    }
+    const result: AuthResult = await authService.register({ name, email, password });
+    setAuth(result.token, result.user);
     return {
-      success: false,
-      error: data.error || 'Failed to create account.',
+      success: true,
+      token: result.token,
+      user: result.user,
+      message: 'Registration successful.',
     };
   } catch (err: any) {
     return {
       success: false,
-      error: 'Unable to connect to the authentication server. Please check your network or server status.',
+      error: err instanceof ApiError ? err.message : (err?.message || 'Failed to create account.'),
     };
   }
 }
@@ -146,9 +127,7 @@ export async function register(name: string, email: string, password: string): P
  */
 export async function logout(): Promise<void> {
   try {
-    await apiFetch('/api/auth/logout', { method: 'POST' });
-  } catch {
-    // Ignore server error on logout
+    await authService.logout();
   } finally {
     clearAuth();
   }
