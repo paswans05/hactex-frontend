@@ -43,6 +43,8 @@ const SLUG_OVERRIDES: Record<string, string> = {
   'Widgets.tsx': 'widgets',
   'auth/SignInBasic.tsx': 'auth/login',
   'auth/SignUpBasic.tsx': 'auth/register',
+  'company/CompanySetup.tsx': 'company/setup',
+  'users/UsersList.tsx': 'users',
 };
 
 /** Derive a manifest slug from a page file path. */

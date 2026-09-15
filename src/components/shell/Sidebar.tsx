@@ -9,6 +9,7 @@ import { useState, useMemo, useRef, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { buildNav, CARET_SVG } from '../../lib/nav';
 import { getUser, clearAuth } from '../../lib/auth';
+import { useCompany } from '../../context/CompanyContext';
 import {
   childrenOf,
   hrefForSlug,
@@ -31,6 +32,7 @@ export function Sidebar(): React.JSX.Element {
   const { pathname } = useLocation();
   const nav = useMemo(() => buildNav(), []);
   const activeSlug = nodeForPath(pathname)?.slug ?? '';
+  const { company } = useCompany();
   const [currentUser, setCurrentUser] = useState(getUser());
 
   useEffect(() => {
@@ -279,7 +281,7 @@ export function Sidebar(): React.JSX.Element {
         <div className="at-sidebar__user-info">
           <div className="at-sidebar__user-name">{currentUser?.name || 'Administrator'}</div>
           <div className="at-sidebar__user-email">
-            {currentUser?.email || (currentUser?.username ? `${currentUser.username}@hactex.ai` : 'admin@hactex.ai')}
+            {company?.name || currentUser?.company_name || (currentUser?.username ? `@${currentUser.username}` : 'Hactex Farm')}
           </div>
         </div>
         <Link to="/auth/login" onClick={() => clearAuth()} className="at-icon-btn" aria-label="Sign out">

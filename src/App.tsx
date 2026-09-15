@@ -16,6 +16,7 @@
 import { Suspense, lazy } from 'react';
 import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
 import { CustomizerProvider } from './context/CustomizerContext';
+import { CompanyProvider } from './context/CompanyContext';
 import { Layout } from './components/shell/Layout';
 import { AppShell } from './components/shell/AppShell';
 import { BareShell } from './components/shell/BareShell';
@@ -48,24 +49,26 @@ function Shell(): React.JSX.Element {
   const slug = pathnameToSlug(pathname);
   if (slug === 'pages/landing') return <LandingShell />;
   if (slug.startsWith('apps/')) return <AppShell />;
-  if (slug.startsWith('auth/') || slug.startsWith('error/')) return <BareShell />;
+  if (slug.startsWith('auth/') || slug.startsWith('error/') || slug === 'company/setup') return <BareShell />;
   return <Layout />;
 }
 
 export function App(): React.JSX.Element {
   return (
     <CustomizerProvider>
-      {/* basename comes from Vite's `base`, so a build made with
-          `vite build --base=/admin/` routes correctly under that prefix with no
-          other change. At the default base it is '/', which is a no-op. */}
-      <BrowserRouter basename={import.meta.env.BASE_URL}>
-        <Routes>
-          <Route element={<Shell />}>
-            <Route index element={<Page />} />
-            <Route path="*" element={<Page />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
+      <CompanyProvider>
+        {/* basename comes from Vite's `base`, so a build made with
+            `vite build --base=/admin/` routes correctly under that prefix with no
+            other change. At the default base it is '/', which is a no-op. */}
+        <BrowserRouter basename={import.meta.env.BASE_URL}>
+          <Routes>
+            <Route element={<Shell />}>
+              <Route index element={<Page />} />
+              <Route path="*" element={<Page />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </CompanyProvider>
     </CustomizerProvider>
   );
 }

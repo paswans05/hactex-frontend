@@ -5,11 +5,13 @@
  */
 import { Dropdown } from '../ui/Dropdown';
 import { useCustomizer } from '../../context/CustomizerContext';
+import { useCompany } from '../../context/CompanyContext';
 import { hrefForSlug } from '../../lib/manifest';
 import { toggleSidebar } from '../../lib/sidebar';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { getUser, clearAuth } from '../../lib/auth';
+import { Building2, Users } from 'lucide-react';
 
 export interface HeaderProps {
   onCommand: () => void;
@@ -18,6 +20,7 @@ export interface HeaderProps {
 
 export function Header({ onCommand, onCustomizer }: HeaderProps): React.JSX.Element {
   const c = useCustomizer();
+  const { company } = useCompany();
   const [currentUser, setCurrentUser] = useState(getUser());
 
   useEffect(() => {
@@ -250,6 +253,8 @@ export function Header({ onCommand, onCustomizer }: HeaderProps): React.JSX.Elem
           )}
         </Dropdown>
 
+
+
         <span className="at-header__divider" />
 
         {/* 10. Profile */}
@@ -269,7 +274,7 @@ export function Header({ onCommand, onCustomizer }: HeaderProps): React.JSX.Elem
           )}
         >
           {() => (
-            <div style={{ minWidth: 220 }}>
+            <div style={{ minWidth: 230 }}>
               <div style={{ padding: 'var(--at-space-3)', borderBlockEnd: '1px solid var(--at-border)' }}>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '8px' }}>
                   <div style={{ fontWeight: 700, color: 'var(--at-text-strong)' }}>{currentUser?.name || 'Administrator'}</div>
@@ -280,11 +285,19 @@ export function Header({ onCommand, onCustomizer }: HeaderProps): React.JSX.Elem
                 <div style={{ fontSize: 'var(--at-text-xs)', color: 'var(--at-text-muted)', marginTop: '2px' }}>
                   {currentUser?.email || (currentUser?.username ? `${currentUser.username}@hactex.ai` : 'admin@hactex.ai')}
                 </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginTop: '6px', fontSize: '11px', color: 'var(--at-success)' }}>
-                  <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: 'currentColor' }}></span>
-                  <span>Authenticated Session</span>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginTop: '6px', fontSize: '11px', color: '#10b981', fontWeight: 600 }}>
+                  <Building2 style={{ width: 13, height: 13 }} />
+                  <span>{company?.name || currentUser?.company_name || 'Hactex Organization'}</span>
                 </div>
               </div>
+              <Link className="at-dropdown__item" to="/users">
+                <Users style={{ width: 14, height: 14, display: 'inline', marginRight: 6 }} />
+                User Management
+              </Link>
+              <Link className="at-dropdown__item" to="/company/setup">
+                <Building2 style={{ width: 14, height: 14, display: 'inline', marginRight: 6 }} />
+                Company Onboarding
+              </Link>
               <Link className="at-dropdown__item" to={hrefForSlug('pages/profile')}>Profile</Link>
               <Link className="at-dropdown__item" to={hrefForSlug('pages/settings')}>Settings</Link>
               <Link className="at-dropdown__item" to="/auth/login" onClick={() => clearAuth()}>Sign out</Link>
