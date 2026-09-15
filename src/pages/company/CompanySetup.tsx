@@ -63,18 +63,7 @@ export const CompanySetup: React.FC = () => {
       setError('Please provide a unique company code (e.g. HACTEX01).');
       return;
     }
-    if (!ownerName.trim() || ownerName.length < 2) {
-      setError('Please provide the account owner\'s full name.');
-      return;
-    }
-    if (!ownerEmail.trim() || !ownerEmail.includes('@')) {
-      setError('Please provide a valid owner email address.');
-      return;
-    }
-    if (!ownerPassword || ownerPassword.length < 6) {
-      setError('Password must be at least 6 characters long.');
-      return;
-    }
+
 
     try {
       setLoading(true);
@@ -103,7 +92,7 @@ export const CompanySetup: React.FC = () => {
       if (res.success && res.data) {
         setSuccessMsg('Company and administrator account created successfully! Setting up your workspace...');
         const { token, user, company } = res.data;
-        
+
         // Persist credentials & company context
         setAuth(token, user, company);
         if (company) {
@@ -330,87 +319,7 @@ export const CompanySetup: React.FC = () => {
               </div>
             </div>
 
-            {/* Step 2: Administrator & Owner Account */}
-            <div className="bg-white rounded-2xl border-2 border-slate-900/15 p-6 shadow-sm flex flex-col justify-between">
-              <div>
-                <div className="flex items-center gap-2 pb-4 mb-4 border-b border-slate-200">
-                  <div className="w-8 h-8 rounded-lg bg-blue-100 border border-blue-300 flex items-center justify-center text-blue-800">
-                    <UserCheck className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <h2 className="font-bold text-slate-900 text-base">2. Administrator / Owner</h2>
-                    <p className="text-xs text-slate-500 font-medium">Primary master account credentials</p>
-                  </div>
-                </div>
 
-                <div className="space-y-4 text-sm">
-                  <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">
-                      Full Name *
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      placeholder="e.g. Dr. Rajesh Kumar"
-                      value={ownerName}
-                      onChange={(e) => setOwnerName(e.target.value)}
-                      className="w-full px-3.5 py-2.5 rounded-lg border-2 border-slate-300 focus:border-blue-600 focus:outline-none font-medium text-slate-900 placeholder-slate-400 text-sm bg-slate-50/50"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">
-                      Admin Work Email *
-                    </label>
-                    <input
-                      type="email"
-                      required
-                      placeholder="admin@apexbroilers.com"
-                      value={ownerEmail}
-                      onChange={(e) => setOwnerEmail(e.target.value)}
-                      className="w-full px-3.5 py-2.5 rounded-lg border-2 border-slate-300 focus:border-blue-600 focus:outline-none font-medium text-slate-900 placeholder-slate-400 text-sm bg-slate-50/50"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">
-                      Master Password *
-                    </label>
-                    <input
-                      type="password"
-                      required
-                      placeholder="Minimum 6 characters"
-                      value={ownerPassword}
-                      onChange={(e) => setOwnerPassword(e.target.value)}
-                      className="w-full px-3.5 py-2.5 rounded-lg border-2 border-slate-300 focus:border-blue-600 focus:outline-none font-medium text-slate-900 placeholder-slate-400 text-sm bg-slate-50/50"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">
-                      Phone Number
-                    </label>
-                    <input
-                      type="tel"
-                      placeholder="+91 9876543210"
-                      value={ownerPhone}
-                      onChange={(e) => setOwnerPhone(e.target.value)}
-                      className="w-full px-3.5 py-2.5 rounded-lg border-2 border-slate-300 focus:border-blue-600 focus:outline-none font-medium text-slate-900 text-sm bg-slate-50/50"
-                    />
-                  </div>
-
-                  <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-600 space-y-1.5">
-                    <div className="flex items-center gap-1.5 font-bold text-slate-800">
-                      <ShieldCheck className="w-4 h-4 text-emerald-600" />
-                      Role Assignment: Administrator
-                    </div>
-                    <p>
-                      This account is automatically designated as company Owner with full operational, user management, and security privileges.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
 
           {/* Action CTA */}

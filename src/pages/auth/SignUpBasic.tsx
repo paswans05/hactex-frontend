@@ -4,27 +4,59 @@
  * never hits the network. <BareShell> provides the loader, theme toggle and
  * home link.
  */
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthBrand, PasswordField, SocialRow } from '../../components/auth/AuthParts';
+import { register, isAuthenticated } from '../../lib/auth';
 
 export const SLUG = 'auth/register';
 
 export default function SignUpBasic(): React.JSX.Element {
+  const navigate = useNavigate();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const submit = (e: React.FormEvent): void => {
+  useEffect(() => {
+    if (isAuthenticated()) {
+      navigate('/company/setup', { replace: true });
+    }
+  }, [navigate]);
+
+  const submit = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault();
     setError('');
+
+    if (!name.trim()) {
+      setError('Please enter your full name.');
+      return;
+    }
+    if (!email.trim()) {
+      setError('Please enter your work email.');
+      return;
+    }
+    if (password.length < 6) {
+      setError('Password must be at least 6 characters.');
+      return;
+    }
+
     setLoading(true);
-    window.setTimeout(() => {
+
+    try {
+      const res = await register(name.trim(), email.trim(), password);
+      if (res.success) {
+        // Direct newly registered user to company setup to configure their farm/tenant
+        navigate('/company/setup', { replace: true });
+      } else {
+        setError(res.error || 'Failed to create account. Please try again.');
+      }
+    } catch {
+      setError('An unexpected error occurred. Please check your network and try again.');
+    } finally {
       setLoading(false);
-      setError('Sign-up is disabled in this demo.');
-    }, 900);
+    }
   };
 
   return (
