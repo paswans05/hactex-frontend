@@ -245,7 +245,7 @@ export function LandingShell(): React.JSX.Element {
               gap: 'var(--at-space-2)',
             }}
           >
-            <span>© {new Date().getFullYear()} HACTEX.ai. All rights reserved.</span>
+            <span>© {new Date().getFullYear()} HACTEX. All rights reserved.</span>
             {/* <span>Operating Platform for Hatcheries & Poultry Farms</span> */}
           </div>
         </footer>
