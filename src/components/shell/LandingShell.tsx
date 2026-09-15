@@ -51,11 +51,11 @@ export function LandingShell(): React.JSX.Element {
         }}
       >
         <Link
-          to="/dashboards/sales"
+          to="/auth/login"
           className="at-btn at-btn--sm at-btn--primary at-press"
           style={{ textDecoration: 'none', padding: '4px 12px', fontSize: 'var(--at-text-xs)' }}
         >
-          Dashboard →
+          Login →
         </Link>
         <button
           className="at-icon-btn"
@@ -202,21 +202,7 @@ export function LandingShell(): React.JSX.Element {
                 fontSize: 'var(--at-text-sm)',
               }}
             >
-              <Link to="/dashboards/sales" className="at-text-muted" style={{ textDecoration: 'none' }}>
-                Platform
-              </Link>
-              <Link to="/dashboards/sales" className="at-text-muted" style={{ textDecoration: 'none' }}>
-                Hatchery
-              </Link>
-              <Link to="/dashboards/sales" className="at-text-muted" style={{ textDecoration: 'none' }}>
-                Poultry Farm
-              </Link>
-              <a href="#features" className="at-text-muted" style={{ textDecoration: 'none' }}>
-                Features
-              </a>
-              <Link to="/dashboards/sales" className="at-text-muted" style={{ textDecoration: 'none' }}>
-                Reports
-              </Link>
+
               <Link to="/pages/starter" className="at-text-muted" style={{ textDecoration: 'none' }}>
                 About
               </Link>

@@ -102,10 +102,10 @@ export default function Landing(): React.JSX.Element {
           Hactex brings hatcheries and poultry farms together on one intelligent platform—helping you manage operations, automate manual work, track performance, and make better decisions.
         </p>
         <div className="at-cluster" style={{ gap: 'var(--at-space-3)', justifyContent: 'center' }}>
-          <Link to="/dashboards/sales" className="at-btn at-btn--primary at-btn--lg at-press" style={{ textDecoration: 'none' }}>
+          <Link to="/auth/register" className="at-btn at-btn--primary at-btn--lg at-press" style={{ textDecoration: 'none' }}>
             Get Started
           </Link>
-          <Link to="/dashboards/sales" className="at-btn at-btn--outline at-btn--lg at-press" style={{ textDecoration: 'none' }}>
+          <Link to="/auth/login" className="at-btn at-btn--outline at-btn--lg at-press" style={{ textDecoration: 'none' }}>
             Explore Platform
           </Link>
         </div>
@@ -564,14 +564,14 @@ export default function Landing(): React.JSX.Element {
           </p>
           <div className="at-cluster" style={{ gap: 'var(--at-space-3)', justifyContent: 'center' }}>
             <Link
-              to="/dashboards/sales"
+              to="/auth/login"
               className="at-btn at-btn--dark at-btn--lg at-press"
               style={{ '--at-shadow-color': 'var(--at-on-accent)', textDecoration: 'none' } as React.CSSProperties}
             >
               Get Started with Hactex
             </Link>
             <Link
-              to="/dashboards/sales"
+              to="/auth/login"
               className="at-btn at-btn--lg at-press"
               style={{
                 background: 'color-mix(in oklab, var(--at-on-accent) 16%, transparent)',
