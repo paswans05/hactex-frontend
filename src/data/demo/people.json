@@ -1,0 +1,13 @@
+{
+  "$schema": "atelier-demo/v1",
+  "people": [
+    { "id": 1, "name": "Alex Morgan", "role": "Admin", "email": "alex@atelier.co", "initials": "AM", "status": "online" },
+    { "id": 2, "name": "Jacob Gerrald", "role": "Sales Rep", "email": "jacob@atelier.co", "initials": "JG", "status": "online" },
+    { "id": 3, "name": "Emma Lee", "role": "Marketing", "email": "emma@atelier.co", "initials": "EL", "status": "away" },
+    { "id": 4, "name": "Olivia Brown", "role": "Support", "email": "olivia@atelier.co", "initials": "OB", "status": "online" },
+    { "id": 5, "name": "Noah Wilson", "role": "Engineering", "email": "noah@atelier.co", "initials": "NW", "status": "offline" },
+    { "id": 6, "name": "Ava Martinez", "role": "Design", "email": "ava@atelier.co", "initials": "AM", "status": "online" },
+    { "id": 7, "name": "Liam Garcia", "role": "Finance", "email": "liam@atelier.co", "initials": "LG", "status": "offline" },
+    { "id": 8, "name": "Sophia Chen", "role": "Product", "email": "sophia@atelier.co", "initials": "SC", "status": "online" }
+  ]
+}

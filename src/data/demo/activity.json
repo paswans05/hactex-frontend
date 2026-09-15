@@ -1,0 +1,11 @@
+{
+  "$schema": "atelier-demo/v1",
+  "activity": [
+    { "id": 1, "actor": "Jacob Gerrald", "action": "closed deal with", "target": "Acme Corp", "time": "2m ago", "value": "$12,400" },
+    { "id": 2, "actor": "Emma Lee", "action": "published", "target": "Q3 Marketing Report", "time": "1h ago" },
+    { "id": 3, "actor": "Olivia Brown", "action": "resolved ticket", "target": "#4012 — Refund request", "time": "3h ago" },
+    { "id": 4, "actor": "Ava Martinez", "action": "shipped", "target": "Order #TX-10241", "time": "5h ago" },
+    { "id": 5, "actor": "Noah Wilson", "action": "deployed", "target": "v2.4.1 to production", "time": "Yesterday" },
+    { "id": 6, "actor": "Sophia Chen", "action": "created", "target": "Project: Mobile Redesign", "time": "2d ago" }
+  ]
+}

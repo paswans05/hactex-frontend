@@ -1,0 +1,1894 @@
+{
+  "$schema": "atelier-nav-manifest/v1",
+  "meta": {
+    "spec": "specs/02-INFORMATION-ARCHITECTURE.md",
+    "registryRoutes": 114,
+    "deliverableHtmlFiles": 114,
+    "sections": [
+      "MAIN",
+      "APPLICATIONS",
+      "MODULES",
+      "PAGES",
+      "UI & FORMS"
+    ]
+  },
+  "nodes": [
+    {
+      "id": "dashboards.sales",
+      "title": "Sales",
+      "slug": "dashboards/sales",
+      "icon": "circle",
+      "parent": "grp.dashboards",
+      "section": "MAIN",
+      "order": 1,
+      "badge": null,
+      "keywords": [
+        "sales"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "dashboards.analytics",
+      "title": "Analytics",
+      "slug": "dashboards/analytics",
+      "icon": "circle",
+      "parent": "grp.dashboards",
+      "section": "MAIN",
+      "order": 2,
+      "badge": null,
+      "keywords": [
+        "analytics"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "dashboards.ecommerce",
+      "title": "eCommerce",
+      "slug": "dashboards/ecommerce",
+      "icon": "circle",
+      "parent": "grp.dashboards",
+      "section": "MAIN",
+      "order": 3,
+      "badge": null,
+      "keywords": [
+        "ecommerce"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "dashboards.crm",
+      "title": "CRM",
+      "slug": "dashboards/crm",
+      "icon": "circle",
+      "parent": "grp.dashboards",
+      "section": "MAIN",
+      "order": 4,
+      "badge": null,
+      "keywords": [
+        "crm"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "dashboards.projects",
+      "title": "Projects",
+      "slug": "dashboards/projects",
+      "icon": "circle",
+      "parent": "grp.dashboards",
+      "section": "MAIN",
+      "order": 5,
+      "badge": null,
+      "keywords": [
+        "projects"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "dashboards.finance",
+      "title": "Finance & Banking",
+      "slug": "dashboards/finance",
+      "icon": "circle",
+      "parent": "grp.dashboards",
+      "section": "MAIN",
+      "order": 6,
+      "badge": null,
+      "keywords": [
+        "finance",
+        "amp",
+        "banking"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "dashboards.crypto",
+      "title": "Crypto",
+      "slug": "dashboards/crypto",
+      "icon": "circle",
+      "parent": "grp.dashboards",
+      "section": "MAIN",
+      "order": 7,
+      "badge": null,
+      "keywords": [
+        "crypto"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "dashboards.nft",
+      "title": "NFT Marketplace",
+      "slug": "dashboards/nft",
+      "icon": "circle",
+      "parent": "grp.dashboards",
+      "section": "MAIN",
+      "order": 8,
+      "badge": null,
+      "keywords": [
+        "nft",
+        "marketplace"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "dashboards.jobs",
+      "title": "Jobs",
+      "slug": "dashboards/jobs",
+      "icon": "circle",
+      "parent": "grp.dashboards",
+      "section": "MAIN",
+      "order": 9,
+      "badge": null,
+      "keywords": [
+        "jobs"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "dashboards.hr",
+      "title": "HR & Payroll",
+      "slug": "dashboards/hr",
+      "icon": "circle",
+      "parent": "grp.dashboards",
+      "section": "MAIN",
+      "order": 10,
+      "badge": null,
+      "keywords": [
+        "hr",
+        "amp",
+        "payroll"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "dashboards.lms",
+      "title": "LMS / Courses",
+      "slug": "dashboards/lms",
+      "icon": "circle",
+      "parent": "grp.dashboards",
+      "section": "MAIN",
+      "order": 11,
+      "badge": null,
+      "keywords": [
+        "lms",
+        "courses"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "dashboards.stocks",
+      "title": "Stocks & Trading",
+      "slug": "dashboards/stocks",
+      "icon": "circle",
+      "parent": "grp.dashboards",
+      "section": "MAIN",
+      "order": 12,
+      "badge": null,
+      "keywords": [
+        "stocks",
+        "amp",
+        "trading"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "dashboards.healthcare",
+      "title": "Healthcare",
+      "slug": "dashboards/healthcare",
+      "icon": "circle",
+      "parent": "grp.dashboards",
+      "section": "MAIN",
+      "order": 13,
+      "badge": null,
+      "keywords": [
+        "healthcare"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "dashboards.pos",
+      "title": "POS & Retail",
+      "slug": "dashboards/pos",
+      "icon": "circle",
+      "parent": "grp.dashboards",
+      "section": "MAIN",
+      "order": 14,
+      "badge": null,
+      "keywords": [
+        "pos",
+        "amp",
+        "retail"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "dashboards.social",
+      "title": "Social Media",
+      "slug": "dashboards/social",
+      "icon": "circle",
+      "parent": "grp.dashboards",
+      "section": "MAIN",
+      "order": 15,
+      "badge": null,
+      "keywords": [
+        "social",
+        "media"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "dashboards.school",
+      "title": "School",
+      "slug": "dashboards/school",
+      "icon": "circle",
+      "parent": "grp.dashboards",
+      "section": "MAIN",
+      "order": 16,
+      "badge": null,
+      "keywords": [
+        "school"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "dashboards.podcast",
+      "title": "Podcast & Media",
+      "slug": "dashboards/podcast",
+      "icon": "circle",
+      "parent": "grp.dashboards",
+      "section": "MAIN",
+      "order": 17,
+      "badge": null,
+      "keywords": [
+        "podcast",
+        "amp",
+        "media"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "apps.email",
+      "title": "Email",
+      "slug": "apps/email",
+      "icon": "circle",
+      "parent": "grp.apps",
+      "section": "APPLICATIONS",
+      "order": 1,
+      "badge": null,
+      "keywords": [
+        "email"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "apps.chat",
+      "title": "Chat",
+      "slug": "apps/chat",
+      "icon": "circle",
+      "parent": "grp.apps",
+      "section": "APPLICATIONS",
+      "order": 2,
+      "badge": "9+",
+      "keywords": [
+        "chat"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "apps.calendar",
+      "title": "Calendar",
+      "slug": "apps/calendar",
+      "icon": "circle",
+      "parent": "grp.apps",
+      "section": "APPLICATIONS",
+      "order": 3,
+      "badge": null,
+      "keywords": [
+        "calendar"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "apps.kanban",
+      "title": "Kanban",
+      "slug": "apps/kanban",
+      "icon": "circle",
+      "parent": "grp.apps",
+      "section": "APPLICATIONS",
+      "order": 4,
+      "badge": null,
+      "keywords": [
+        "kanban"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "apps.todo",
+      "title": "To-Do",
+      "slug": "apps/todo",
+      "icon": "circle",
+      "parent": "grp.apps",
+      "section": "APPLICATIONS",
+      "order": 5,
+      "badge": null,
+      "keywords": [
+        "to",
+        "do"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "apps.file-manager",
+      "title": "File Manager",
+      "slug": "apps/file-manager",
+      "icon": "circle",
+      "parent": "grp.apps",
+      "section": "APPLICATIONS",
+      "order": 6,
+      "badge": null,
+      "keywords": [
+        "file",
+        "manager"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "apps.gallery",
+      "title": "Gallery",
+      "slug": "apps/gallery",
+      "icon": "circle",
+      "parent": "grp.apps",
+      "section": "APPLICATIONS",
+      "order": 7,
+      "badge": null,
+      "keywords": [
+        "gallery"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "apps.contacts",
+      "title": "Contacts",
+      "slug": "apps/contacts",
+      "icon": "circle",
+      "parent": "grp.apps",
+      "section": "APPLICATIONS",
+      "order": 8,
+      "badge": null,
+      "keywords": [
+        "contacts"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "apps.notes",
+      "title": "Notes",
+      "slug": "apps/notes",
+      "icon": "circle",
+      "parent": "grp.apps",
+      "section": "APPLICATIONS",
+      "order": 9,
+      "badge": null,
+      "keywords": [
+        "notes"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "apps.media-player",
+      "title": "Media Player",
+      "slug": "apps/media-player",
+      "icon": "circle",
+      "parent": "grp.apps",
+      "section": "APPLICATIONS",
+      "order": 10,
+      "badge": null,
+      "keywords": [
+        "media",
+        "player"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "ecommerce.invoices",
+      "title": "Invoices",
+      "slug": "ecommerce/invoices",
+      "icon": "circle",
+      "parent": "grp.apps",
+      "section": "APPLICATIONS",
+      "order": 11,
+      "badge": null,
+      "keywords": [
+        "invoices"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "widgets",
+      "title": "Widgets",
+      "slug": "widgets",
+      "icon": "circle",
+      "parent": "grp.apps",
+      "section": "APPLICATIONS",
+      "order": 12,
+      "badge": null,
+      "keywords": [
+        "widgets"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "docs",
+      "title": "Documentation",
+      "slug": "docs",
+      "icon": "circle",
+      "parent": "grp.apps",
+      "section": "APPLICATIONS",
+      "order": 13,
+      "badge": null,
+      "keywords": [
+        "documentation"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "crm.leads",
+      "title": "Leads",
+      "slug": "crm/leads",
+      "icon": "circle",
+      "parent": "grp.crm",
+      "section": "MODULES",
+      "order": 1,
+      "badge": null,
+      "keywords": [
+        "leads"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "crm.deals",
+      "title": "Deals",
+      "slug": "crm/deals",
+      "icon": "circle",
+      "parent": "grp.crm",
+      "section": "MODULES",
+      "order": 2,
+      "badge": null,
+      "keywords": [
+        "deals"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "crm.customers",
+      "title": "Customers",
+      "slug": "crm/customers",
+      "icon": "circle",
+      "parent": "grp.crm",
+      "section": "MODULES",
+      "order": 3,
+      "badge": null,
+      "keywords": [
+        "customers"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "crm.reports",
+      "title": "Reports",
+      "slug": "crm/reports",
+      "icon": "circle",
+      "parent": "grp.crm",
+      "section": "MODULES",
+      "order": 4,
+      "badge": null,
+      "keywords": [
+        "reports"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "projects.projects-list",
+      "title": "Projects List",
+      "slug": "projects/projects-list",
+      "icon": "circle",
+      "parent": "grp.projects",
+      "section": "MODULES",
+      "order": 1,
+      "badge": null,
+      "keywords": [
+        "projects",
+        "list"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "projects.project-details",
+      "title": "Project Details",
+      "slug": "projects/project-details",
+      "icon": "circle",
+      "parent": "grp.projects",
+      "section": "MODULES",
+      "order": 2,
+      "badge": null,
+      "keywords": [
+        "project",
+        "details"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "projects.create-project",
+      "title": "Create Project",
+      "slug": "projects/create-project",
+      "icon": "circle",
+      "parent": "grp.projects",
+      "section": "MODULES",
+      "order": 3,
+      "badge": null,
+      "keywords": [
+        "create",
+        "project"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "ecommerce.products",
+      "title": "Products",
+      "slug": "ecommerce/products",
+      "icon": "circle",
+      "parent": "grp.ecommerce",
+      "section": "MODULES",
+      "order": 1,
+      "badge": null,
+      "keywords": [
+        "products"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "ecommerce.product-details",
+      "title": "Product Details",
+      "slug": "ecommerce/product-details",
+      "icon": "circle",
+      "parent": "grp.ecommerce",
+      "section": "MODULES",
+      "order": 2,
+      "badge": null,
+      "keywords": [
+        "product",
+        "details"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "ecommerce.add-product",
+      "title": "Add Product",
+      "slug": "ecommerce/add-product",
+      "icon": "circle",
+      "parent": "grp.ecommerce",
+      "section": "MODULES",
+      "order": 3,
+      "badge": null,
+      "keywords": [
+        "add",
+        "product"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "ecommerce.edit-product",
+      "title": "Edit Product",
+      "slug": "ecommerce/edit-product",
+      "icon": "circle",
+      "parent": "grp.ecommerce",
+      "section": "MODULES",
+      "order": 4,
+      "badge": null,
+      "keywords": [
+        "edit",
+        "product"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "ecommerce.cart",
+      "title": "Cart",
+      "slug": "ecommerce/cart",
+      "icon": "circle",
+      "parent": "grp.ecommerce",
+      "section": "MODULES",
+      "order": 5,
+      "badge": null,
+      "keywords": [
+        "cart"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "ecommerce.checkout",
+      "title": "Checkout",
+      "slug": "ecommerce/checkout",
+      "icon": "circle",
+      "parent": "grp.ecommerce",
+      "section": "MODULES",
+      "order": 6,
+      "badge": null,
+      "keywords": [
+        "checkout"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "ecommerce.orders",
+      "title": "Orders",
+      "slug": "ecommerce/orders",
+      "icon": "circle",
+      "parent": "grp.ecommerce",
+      "section": "MODULES",
+      "order": 7,
+      "badge": "24",
+      "keywords": [
+        "orders"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "ecommerce.order-details",
+      "title": "Order Details",
+      "slug": "ecommerce/order-details",
+      "icon": "circle",
+      "parent": "grp.ecommerce",
+      "section": "MODULES",
+      "order": 8,
+      "badge": null,
+      "keywords": [
+        "order",
+        "details"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "ecommerce.customers",
+      "title": "Customers",
+      "slug": "ecommerce/customers",
+      "icon": "circle",
+      "parent": "grp.ecommerce",
+      "section": "MODULES",
+      "order": 9,
+      "badge": null,
+      "keywords": [
+        "customers"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "ecommerce.customer-details",
+      "title": "Customer Details",
+      "slug": "ecommerce/customer-details",
+      "icon": "circle",
+      "parent": "grp.ecommerce",
+      "section": "MODULES",
+      "order": 10,
+      "badge": null,
+      "keywords": [
+        "customer",
+        "details"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "ecommerce.sellers",
+      "title": "Sellers",
+      "slug": "ecommerce/sellers",
+      "icon": "circle",
+      "parent": "grp.ecommerce",
+      "section": "MODULES",
+      "order": 11,
+      "badge": null,
+      "keywords": [
+        "sellers"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "ecommerce.invoice-details",
+      "title": "Invoice Details",
+      "slug": "ecommerce/invoice-details",
+      "icon": "circle",
+      "parent": "grp.ecommerce",
+      "section": "MODULES",
+      "order": 12,
+      "badge": null,
+      "keywords": [
+        "invoice",
+        "details"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "ecommerce.create-invoice",
+      "title": "Create Invoice",
+      "slug": "ecommerce/create-invoice",
+      "icon": "circle",
+      "parent": "grp.ecommerce",
+      "section": "MODULES",
+      "order": 13,
+      "badge": null,
+      "keywords": [
+        "create",
+        "invoice"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "crypto.wallet",
+      "title": "Wallet",
+      "slug": "crypto/wallet",
+      "icon": "circle",
+      "parent": "grp.crypto",
+      "section": "MODULES",
+      "order": 1,
+      "badge": null,
+      "keywords": [
+        "wallet"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "crypto.buy-sell",
+      "title": "Buy/Sell",
+      "slug": "crypto/buy-sell",
+      "icon": "circle",
+      "parent": "grp.crypto",
+      "section": "MODULES",
+      "order": 2,
+      "badge": null,
+      "keywords": [
+        "buy",
+        "sell"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "crypto.marketcap",
+      "title": "Market",
+      "slug": "crypto/marketcap",
+      "icon": "circle",
+      "parent": "grp.crypto",
+      "section": "MODULES",
+      "order": 3,
+      "badge": null,
+      "keywords": [
+        "market"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "crypto.exchange",
+      "title": "Exchange",
+      "slug": "crypto/exchange",
+      "icon": "circle",
+      "parent": "grp.crypto",
+      "section": "MODULES",
+      "order": 4,
+      "badge": null,
+      "keywords": [
+        "exchange"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "crypto.transactions",
+      "title": "Transactions",
+      "slug": "crypto/transactions",
+      "icon": "circle",
+      "parent": "grp.crypto",
+      "section": "MODULES",
+      "order": 5,
+      "badge": null,
+      "keywords": [
+        "transactions"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "nft.explore",
+      "title": "Explore",
+      "slug": "nft/explore",
+      "icon": "circle",
+      "parent": "grp.nft",
+      "section": "MODULES",
+      "order": 1,
+      "badge": null,
+      "keywords": [
+        "explore"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "nft.live-auction",
+      "title": "Live Auction",
+      "slug": "nft/live-auction",
+      "icon": "circle",
+      "parent": "grp.nft",
+      "section": "MODULES",
+      "order": 2,
+      "badge": null,
+      "keywords": [
+        "live",
+        "auction"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "nft.collections",
+      "title": "Collections",
+      "slug": "nft/collections",
+      "icon": "circle",
+      "parent": "grp.nft",
+      "section": "MODULES",
+      "order": 3,
+      "badge": null,
+      "keywords": [
+        "collections"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "nft.creators",
+      "title": "Creators",
+      "slug": "nft/creators",
+      "icon": "circle",
+      "parent": "grp.nft",
+      "section": "MODULES",
+      "order": 4,
+      "badge": null,
+      "keywords": [
+        "creators"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "nft.item-details",
+      "title": "Item Details",
+      "slug": "nft/item-details",
+      "icon": "circle",
+      "parent": "grp.nft",
+      "section": "MODULES",
+      "order": 5,
+      "badge": null,
+      "keywords": [
+        "item",
+        "details"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "jobs.job-listing",
+      "title": "Job Listing",
+      "slug": "jobs/job-listing",
+      "icon": "circle",
+      "parent": "grp.jobs",
+      "section": "MODULES",
+      "order": 1,
+      "badge": null,
+      "keywords": [
+        "job",
+        "listing"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "jobs.job-details",
+      "title": "Job Details",
+      "slug": "jobs/job-details",
+      "icon": "circle",
+      "parent": "grp.jobs",
+      "section": "MODULES",
+      "order": 2,
+      "badge": null,
+      "keywords": [
+        "job",
+        "details"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "jobs.job-apply",
+      "title": "Job Apply",
+      "slug": "jobs/job-apply",
+      "icon": "circle",
+      "parent": "grp.jobs",
+      "section": "MODULES",
+      "order": 3,
+      "badge": null,
+      "keywords": [
+        "job",
+        "apply"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "jobs.candidates",
+      "title": "Candidates",
+      "slug": "jobs/candidates",
+      "icon": "circle",
+      "parent": "grp.jobs",
+      "section": "MODULES",
+      "order": 4,
+      "badge": null,
+      "keywords": [
+        "candidates"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "jobs.candidate-details",
+      "title": "Candidate Details",
+      "slug": "jobs/candidate-details",
+      "icon": "circle",
+      "parent": "grp.jobs",
+      "section": "MODULES",
+      "order": 5,
+      "badge": null,
+      "keywords": [
+        "candidate",
+        "details"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "jobs.companies",
+      "title": "Companies",
+      "slug": "jobs/companies",
+      "icon": "circle",
+      "parent": "grp.jobs",
+      "section": "MODULES",
+      "order": 6,
+      "badge": null,
+      "keywords": [
+        "companies"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "jobs.my-profile",
+      "title": "My Profile",
+      "slug": "jobs/my-profile",
+      "icon": "circle",
+      "parent": "grp.jobs",
+      "section": "MODULES",
+      "order": 7,
+      "badge": null,
+      "keywords": [
+        "my",
+        "profile"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "blog.blog",
+      "title": "Blog",
+      "slug": "blog/blog",
+      "icon": "circle",
+      "parent": "grp.blog",
+      "section": "MODULES",
+      "order": 1,
+      "badge": null,
+      "keywords": [
+        "blog"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "blog.blog-details",
+      "title": "Blog Details",
+      "slug": "blog/blog-details",
+      "icon": "circle",
+      "parent": "grp.blog",
+      "section": "MODULES",
+      "order": 2,
+      "badge": null,
+      "keywords": [
+        "blog",
+        "details"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "blog.create-post",
+      "title": "Create Post",
+      "slug": "blog/create-post",
+      "icon": "circle",
+      "parent": "grp.blog",
+      "section": "MODULES",
+      "order": 3,
+      "badge": null,
+      "keywords": [
+        "create",
+        "post"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "auth.sign-in-basic",
+      "title": "Sign In",
+      "slug": "auth/sign-in-basic",
+      "icon": "circle",
+      "parent": "grp.auth",
+      "section": "PAGES",
+      "order": 1,
+      "badge": null,
+      "keywords": [
+        "sign",
+        "in"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "auth.sign-up-basic",
+      "title": "Sign Up",
+      "slug": "auth/sign-up-basic",
+      "icon": "circle",
+      "parent": "grp.auth",
+      "section": "PAGES",
+      "order": 2,
+      "badge": null,
+      "keywords": [
+        "sign",
+        "up"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "auth.forgot-password-basic",
+      "title": "Forgot Password",
+      "slug": "auth/forgot-password-basic",
+      "icon": "circle",
+      "parent": "grp.auth",
+      "section": "PAGES",
+      "order": 3,
+      "badge": null,
+      "keywords": [
+        "forgot",
+        "password"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "auth.lock-screen-basic",
+      "title": "Lock Screen",
+      "slug": "auth/lock-screen-basic",
+      "icon": "circle",
+      "parent": "grp.auth",
+      "section": "PAGES",
+      "order": 4,
+      "badge": null,
+      "keywords": [
+        "lock",
+        "screen"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "error.404",
+      "title": "404 Error",
+      "slug": "error/404",
+      "icon": "circle",
+      "parent": "grp.auth",
+      "section": "PAGES",
+      "order": 5,
+      "badge": null,
+      "keywords": [
+        "404",
+        "error"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "error.500",
+      "title": "500 Error",
+      "slug": "error/500",
+      "icon": "circle",
+      "parent": "grp.auth",
+      "section": "PAGES",
+      "order": 6,
+      "badge": null,
+      "keywords": [
+        "500",
+        "error"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "pages.profile",
+      "title": "Profile",
+      "slug": "pages/profile",
+      "icon": "circle",
+      "parent": "grp.utility",
+      "section": "PAGES",
+      "order": 1,
+      "badge": null,
+      "keywords": [
+        "profile"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "pages.settings",
+      "title": "Settings",
+      "slug": "pages/settings",
+      "icon": "circle",
+      "parent": "grp.utility",
+      "section": "PAGES",
+      "order": 2,
+      "badge": null,
+      "keywords": [
+        "settings"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "pages.pricing",
+      "title": "Pricing",
+      "slug": "pages/pricing",
+      "icon": "circle",
+      "parent": "grp.utility",
+      "section": "PAGES",
+      "order": 3,
+      "badge": null,
+      "keywords": [
+        "pricing"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "pages.faq",
+      "title": "FAQ",
+      "slug": "pages/faq",
+      "icon": "circle",
+      "parent": "grp.utility",
+      "section": "PAGES",
+      "order": 4,
+      "badge": null,
+      "keywords": [
+        "faq"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "pages.timeline",
+      "title": "Timeline",
+      "slug": "pages/timeline",
+      "icon": "circle",
+      "parent": "grp.utility",
+      "section": "PAGES",
+      "order": 5,
+      "badge": null,
+      "keywords": [
+        "timeline"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "pages.team",
+      "title": "Team",
+      "slug": "pages/team",
+      "icon": "circle",
+      "parent": "grp.utility",
+      "section": "PAGES",
+      "order": 6,
+      "badge": null,
+      "keywords": [
+        "team"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "pages.starter",
+      "title": "Starter",
+      "slug": "pages/starter",
+      "icon": "circle",
+      "parent": "grp.utility",
+      "section": "PAGES",
+      "order": 7,
+      "badge": null,
+      "keywords": [
+        "starter"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "pages.landing",
+      "title": "Landing",
+      "slug": "pages/landing",
+      "icon": "circle",
+      "parent": "grp.utility",
+      "section": "PAGES",
+      "order": 8,
+      "badge": null,
+      "keywords": [
+        "landing"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "pages.terms",
+      "title": "Terms & Conditions",
+      "slug": "pages/terms",
+      "icon": "circle",
+      "parent": "grp.utility",
+      "section": "PAGES",
+      "order": 9,
+      "badge": null,
+      "keywords": [
+        "terms",
+        "conditions",
+        "legal",
+        "privacy"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "ui.buttons",
+      "title": "Buttons",
+      "slug": "ui/buttons",
+      "icon": "circle",
+      "parent": "grp.ui",
+      "section": "UI & FORMS",
+      "order": 1,
+      "badge": null,
+      "keywords": [
+        "buttons"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "ui.cards",
+      "title": "Cards",
+      "slug": "ui/cards",
+      "icon": "circle",
+      "parent": "grp.ui",
+      "section": "UI & FORMS",
+      "order": 2,
+      "badge": null,
+      "keywords": [
+        "cards"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "ui.badges",
+      "title": "Badges",
+      "slug": "ui/badges",
+      "icon": "circle",
+      "parent": "grp.ui",
+      "section": "UI & FORMS",
+      "order": 3,
+      "badge": null,
+      "keywords": [
+        "badges"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "ui.alerts",
+      "title": "Alerts",
+      "slug": "ui/alerts",
+      "icon": "circle",
+      "parent": "grp.ui",
+      "section": "UI & FORMS",
+      "order": 4,
+      "badge": null,
+      "keywords": [
+        "alerts"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "ui.avatars",
+      "title": "Avatars",
+      "slug": "ui/avatars",
+      "icon": "circle",
+      "parent": "grp.ui",
+      "section": "UI & FORMS",
+      "order": 5,
+      "badge": null,
+      "keywords": [
+        "avatars"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "ui.modals",
+      "title": "Modals",
+      "slug": "ui/modals",
+      "icon": "circle",
+      "parent": "grp.ui",
+      "section": "UI & FORMS",
+      "order": 6,
+      "badge": null,
+      "keywords": [
+        "modals"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "ui.tabs",
+      "title": "Tabs",
+      "slug": "ui/tabs",
+      "icon": "circle",
+      "parent": "grp.ui",
+      "section": "UI & FORMS",
+      "order": 7,
+      "badge": null,
+      "keywords": [
+        "tabs"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "ui.accordions",
+      "title": "Accordions",
+      "slug": "ui/accordions",
+      "icon": "circle",
+      "parent": "grp.ui",
+      "section": "UI & FORMS",
+      "order": 8,
+      "badge": null,
+      "keywords": [
+        "accordions"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "ui.tables",
+      "title": "Tables (basic)",
+      "slug": "ui/tables",
+      "icon": "circle",
+      "parent": "grp.ui",
+      "section": "UI & FORMS",
+      "order": 9,
+      "badge": null,
+      "keywords": [
+        "tables",
+        "basic"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "ui.typography",
+      "title": "Typography",
+      "slug": "ui/typography",
+      "icon": "circle",
+      "parent": "grp.ui",
+      "section": "UI & FORMS",
+      "order": 10,
+      "badge": null,
+      "keywords": [
+        "typography"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "ui.dropdowns",
+      "title": "Dropdowns",
+      "slug": "ui/dropdowns",
+      "icon": "circle",
+      "parent": "grp.ui",
+      "section": "UI & FORMS",
+      "order": 11,
+      "badge": null,
+      "keywords": [
+        "dropdowns"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "ui.tooltips",
+      "title": "Tooltips",
+      "slug": "ui/tooltips",
+      "icon": "circle",
+      "parent": "grp.ui",
+      "section": "UI & FORMS",
+      "order": 12,
+      "badge": null,
+      "keywords": [
+        "tooltips"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "ui.progress",
+      "title": "Progress",
+      "slug": "ui/progress",
+      "icon": "circle",
+      "parent": "grp.ui",
+      "section": "UI & FORMS",
+      "order": 13,
+      "badge": null,
+      "keywords": [
+        "progress"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "ui.pagination",
+      "title": "Pagination",
+      "slug": "ui/pagination",
+      "icon": "circle",
+      "parent": "grp.ui",
+      "section": "UI & FORMS",
+      "order": 14,
+      "badge": null,
+      "keywords": [
+        "pagination"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "forms.layouts",
+      "title": "Layouts",
+      "slug": "forms/layouts",
+      "icon": "circle",
+      "parent": "grp.forms",
+      "section": "UI & FORMS",
+      "order": 1,
+      "badge": null,
+      "keywords": [
+        "layouts"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "forms.validation",
+      "title": "Validation",
+      "slug": "forms/validation",
+      "icon": "circle",
+      "parent": "grp.forms",
+      "section": "UI & FORMS",
+      "order": 2,
+      "badge": null,
+      "keywords": [
+        "validation"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "forms.basic-elements",
+      "title": "Basic Elements",
+      "slug": "forms/basic-elements",
+      "icon": "circle",
+      "parent": "grp.forms",
+      "section": "UI & FORMS",
+      "order": 3,
+      "badge": null,
+      "keywords": [
+        "basic",
+        "elements"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "forms.select",
+      "title": "Select",
+      "slug": "forms/select",
+      "icon": "circle",
+      "parent": "grp.forms",
+      "section": "UI & FORMS",
+      "order": 4,
+      "badge": null,
+      "keywords": [
+        "select"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "forms.editor",
+      "title": "Editor",
+      "slug": "forms/editor",
+      "icon": "circle",
+      "parent": "grp.forms",
+      "section": "UI & FORMS",
+      "order": 5,
+      "badge": null,
+      "keywords": [
+        "editor"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "charts.apex",
+      "title": "ApexCharts",
+      "slug": "charts/apex",
+      "icon": "circle",
+      "parent": "grp.charts",
+      "section": "UI & FORMS",
+      "order": 1,
+      "badge": null,
+      "keywords": [
+        "apexcharts"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "tables.data-tables",
+      "title": "Data Tables",
+      "slug": "tables/data-tables",
+      "icon": "circle",
+      "parent": "grp.charts",
+      "section": "UI & FORMS",
+      "order": 2,
+      "badge": null,
+      "keywords": [
+        "data",
+        "tables"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "icons.tabler",
+      "title": "Icons",
+      "slug": "icons/tabler",
+      "icon": "circle",
+      "parent": "grp.charts",
+      "section": "UI & FORMS",
+      "order": 3,
+      "badge": null,
+      "keywords": [
+        "icons"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "maps.leaflet",
+      "title": "Maps",
+      "slug": "maps/leaflet",
+      "icon": "circle",
+      "parent": "grp.charts",
+      "section": "UI & FORMS",
+      "order": 4,
+      "badge": null,
+      "keywords": [
+        "maps"
+      ],
+      "inMenu": true,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "ecommerce.order-success",
+      "title": "Order Success",
+      "slug": "ecommerce/order-success",
+      "icon": "circle",
+      "parent": "grp.ecommerce",
+      "section": "MODULES",
+      "order": 99,
+      "badge": null,
+      "keywords": [
+        "order",
+        "success"
+      ],
+      "inMenu": false,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "auth.sign-up-cover",
+      "title": "Sign Up (Cover)",
+      "slug": "auth/sign-up-cover",
+      "icon": "circle",
+      "parent": "grp.auth",
+      "section": "PAGES",
+      "order": 99,
+      "badge": null,
+      "keywords": [
+        "sign",
+        "up",
+        "cover"
+      ],
+      "inMenu": false,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "auth.sign-in-cover",
+      "title": "Sign In (Cover)",
+      "slug": "auth/sign-in-cover",
+      "icon": "circle",
+      "parent": "grp.auth",
+      "section": "PAGES",
+      "order": 99,
+      "badge": null,
+      "keywords": [
+        "sign",
+        "in",
+        "cover"
+      ],
+      "inMenu": false,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "error.401",
+      "title": "401",
+      "slug": "error/401",
+      "icon": "circle",
+      "parent": "grp.auth",
+      "section": "PAGES",
+      "order": 99,
+      "badge": null,
+      "keywords": [
+        "401"
+      ],
+      "inMenu": false,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "error.403",
+      "title": "403",
+      "slug": "error/403",
+      "icon": "circle",
+      "parent": "grp.auth",
+      "section": "PAGES",
+      "order": 99,
+      "badge": null,
+      "keywords": [
+        "403"
+      ],
+      "inMenu": false,
+      "alias": null,
+      "external": false
+    },
+    {
+      "id": "error.503",
+      "title": "503",
+      "slug": "error/503",
+      "icon": "circle",
+      "parent": "grp.auth",
+      "section": "PAGES",
+      "order": 99,
+      "badge": null,
+      "keywords": [
+        "503"
+      ],
+      "inMenu": false,
+      "alias": null,
+      "external": false
+    }
+  ]
+}

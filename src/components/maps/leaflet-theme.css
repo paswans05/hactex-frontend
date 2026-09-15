@@ -1,0 +1,49 @@
+/*
+ * Hactex — Leaflet chrome re-skinned onto the --at-* token core.
+ *
+ * The map's own theme layer, kept in a file so the map picks it up from the
+ * component rather than from a page-level <style> block.
+ */
+.leaflet-container {
+  background: var(--at-surface);
+  font-family: inherit;
+}
+
+.leaflet-bar a,
+.leaflet-control-zoom a {
+  background: var(--at-paper);
+  color: var(--at-text);
+  border-color: var(--at-ink);
+  font-weight: 700;
+}
+
+.leaflet-bar a:hover,
+.leaflet-control-zoom a:hover {
+  background: var(--at-accent-wash);
+  color: var(--at-accent-text);
+}
+
+.leaflet-control-attribution {
+  background: color-mix(in oklab, var(--at-paper) 80%, transparent);
+  color: var(--at-text-muted);
+}
+
+.leaflet-control-attribution a {
+  color: var(--at-accent-text);
+}
+
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+  background: var(--at-paper);
+  color: var(--at-text);
+  border: 1px solid var(--at-ink);
+  box-shadow: var(--at-shadow-4);
+  border-radius: var(--at-radius-sm);
+}
+
+/* Leaflet's .leaflet-div-icon paints a white box with a grey border by default.
+   Our pins draw their own dot, so strip the chrome underneath them. */
+.at-leaflet-pin {
+  background: none;
+  border: 0;
+}

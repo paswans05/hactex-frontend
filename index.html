@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en" data-at-route="dashboards/sales">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+
+  <!-- ============================================================ -->
+  <!-- ATELIER ANTI-FLASH THEME RESTORE — MUST be first executable  -->
+  <!-- in <head>, before any stylesheet. Runs synchronously (~1ms), -->
+  <!-- reads at: localStorage, resolves system theme via matchMedia,-->
+  <!-- and writes all data-at-* + dir + lang on <html> before paint.-->
+  <!-- The anti-flash theme restore — never defer.  -->
+  <!-- ============================================================ -->
+  <script>
+    /* Hactex anti-flash — must be FIRST in <head>, before stylesheets. */
+    (function () {
+      var D = document.documentElement,
+        LS;
+      try {
+        LS = window.localStorage;
+      } catch (e) {
+        LS = null;
+      }
+      function get(k) {
+        try {
+          return LS && LS.getItem(k);
+        } catch (e) {
+          return null;
+        }
+      }
+
+      /* schema guard: wipe unknown shape, never throw.
+         v2 split typography off the colour preset into its own key. A v1
+         install picked ONE name for both, so carry that name across as the
+         type set — otherwise upgrading silently drops every non-Hactex user
+         back to Fraunces. Migrating instead of wiping also keeps their layout
+         prefs. Any other shape is still wiped, as before. */
+      try {
+        var schema = get('at:schema');
+        if (LS && schema && schema !== '2') {
+          if (schema === '1') {
+            var v1preset = get('at:theme-preset');
+            if (v1preset && !get('at:type-preset')) LS.setItem('at:type-preset', v1preset);
+          } else {
+            Object.keys(LS).forEach(function (k) {
+              if (k.indexOf('at:') === 0) LS.removeItem(k);
+            });
+          }
+        }
+        if (LS) LS.setItem('at:schema', '2');
+      } catch (e) { }
+
+      /* ---- THEME (light | dark | system) ---- */
+      var theme = get('at:theme') || 'light';
+      var sysDark = false;
+      try {
+        sysDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      } catch (e) { }
+      var resolved = theme === 'system' ? (sysDark ? 'dark' : 'light') : theme;
+      D.setAttribute('data-at-theme', resolved);
+
+      /* ---- COLOUR SCHEME (atelier default writes NO attribute) ---- */
+      var preset = get('at:theme-preset') || 'atelier';
+      if (preset === 'atelier') D.removeAttribute('data-at-theme-preset');
+      else D.setAttribute('data-at-theme-preset', preset);
+
+      /* ---- TYPE SET — independent of the colour scheme above. Same
+         convention: the atelier default is inline on :root and writes NO
+         attribute. ---- */
+      var typeset = get('at:type-preset') || 'atelier';
+      if (typeset === 'atelier') D.removeAttribute('data-at-type-preset');
+      else D.setAttribute('data-at-type-preset', typeset);
+
+      /* ---- LANG + DIR ---- */
+      var lang = (get('at:lang') || 'EN').toUpperCase();
+      D.setAttribute('lang', lang.toLowerCase());
+      var dirStored = get('at:dir');
+      var dir = dirStored ? dirStored : lang === 'AR' ? 'rtl' : 'ltr';
+      D.setAttribute('dir', dir);
+
+      /* ---- LAYOUT / SCHEME attributes (write only non-defaults) ---- */
+      function setAttr(attr, key, def) {
+        var v = get(key);
+        if (v && v !== def) D.setAttribute(attr, v);
+        else D.removeAttribute(attr);
+      }
+      setAttr('data-at-sidebar-style', 'at:sidebar-style', 'default');
+      setAttr('data-at-menu', 'at:menu', 'click');
+      setAttr('data-at-page', 'at:page', 'regular');
+      setAttr('data-at-width', 'at:width', 'fluid');
+      setAttr('data-at-header-position', 'at:header-position', 'fixed');
+      setAttr('data-at-sidebar-position', 'at:sidebar-position', 'fixed');
+      setAttr('data-at-header', 'at:header-scheme', 'light');
+      setAttr('data-at-sidebar-image', 'at:sidebar-image', 'none');
+
+      /* ---- COLLAPSED RAIL ----
+         The rail is the DEFAULT, so the flag is stored inverted: '0' is the
+         opt-out the toggle writes when the reader expands it, and an untouched
+         install paints collapsed. Compact / Expand lock their own geometry and
+         hide the hamburger, so the flag must not leak into them — it would
+         make Expand render as an icon rail. */
+      var sbStyle = D.getAttribute('data-at-sidebar-style') || 'default';
+      if (sbStyle === 'default' && get('at:collapsed') !== '0')
+        D.setAttribute('data-at-collapsed', 'true');
+      else D.removeAttribute('data-at-collapsed');
+
+      /* ---- CUSTOM ACCENT (inline style) ---- */
+      var customAccent = get('at:accent-custom');
+      if (preset === 'custom' || customAccent) {
+        D.style.setProperty('--at-accent', customAccent);
+        var h = customAccent.replace('#', '');
+        var r = parseInt(h.substr(0, 2), 16),
+          g = parseInt(h.substr(2, 2), 16),
+          b = parseInt(h.substr(4, 2), 16);
+        var L = (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255;
+        D.style.setProperty('--at-on-accent', L > 0.62 ? '#1a1410' : '#FFFFFF');
+      }
+    })();
+  </script>
+
+  <title>Hactex</title>
+  <meta name="description"
+    content="Hactex — premium multipurpose admin & dashboard template with a Bold Press neo-brutalist interface, 17 dashboards, 10 web apps, a full eCommerce suite, 12 colour schemes and 12 type sets." />
+  <meta name="theme-color" content="#1a1410" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#f3ebda" media="(prefers-color-scheme: light)" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <!-- Google Fonts — all 12 type sets (display/body) + constant mono
+         (JetBrains Mono). Loaded together so switching sets re-types with no
+         font reload. Typography is its own axis (data-at-type-preset,
+         styles/tokens/_typography.css), independent of the colour scheme, so
+         any of the twelve pairs can be active. Byte-identical to the request in
+         the type-set tokens — see tokens/_typography.css for why each weight list is
+         what it is, and for the two families that clamp at 800. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;700;900&family=Libre+Franklin:wght@400;500;600;700;800&family=Archivo:wght@600;700;800&family=Instrument+Sans:wght@400;500;600;700&family=Bricolage+Grotesque:wght@600;700;800&family=Manrope:wght@400;500;600;700&family=Sora:wght@600;700;800&family=Outfit:wght@500;600;700;800&family=Figtree:wght@400;500;600;700&family=Saira:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600;700&family=Antonio:wght@400;500;600;700&family=Public+Sans:wght@400;500;600;700&family=Oxanium:wght@600;700;800&family=Playfair+Display:wght@600;700;800;900&family=DM+Sans:wght@400;500;600;700&family=Chivo:wght@600;700;800;900&family=Mulish:wght@400;500;600;700&family=Zilla+Slab:wght@500;600;700&family=Gabarito:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&display=swap"
+    rel="stylesheet" />
+  <!-- app.css is imported by src/main.tsx so Vite compiles it — no <link> here. -->
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+
+</html>

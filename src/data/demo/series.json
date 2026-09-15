@@ -1,0 +1,21 @@
+{
+  "$schema": "atelier-demo/v1",
+  "monthlyRevenue": [42100, 48300, 51000, 47800, 55200, 61400, 67800, 72100, 68900, 74820, 64300, 71200],
+  "monthlyRevenueCategories": ["Jul", "Aug", "Sep", "Oct", "Nov", "Dec", "Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+  "categorySplit": [58, 24, 12],
+  "categoryLabels": ["Electronics", "Apparel", "Home"],
+  "trafficLine": [4200, 5100, 4800, 6200, 7400, 6800, 8200, 9100, 8700, 9800, 11200, 12400],
+  "funnel": [12400, 8200, 4800, 2100, 870],
+  "funnelLabels": ["Visits", "Sign-ups", "Trials", "Quotes", "Won"],
+  "sourceBar": [4200, 3100, 2400, 1800, 1200],
+  "sourceLabels": ["Direct", "Search", "Social", "Referral", "Email"],
+  "salesBar": [320, 410, 380, 520, 480, 610, 590],
+  "burndown": [
+    { "name": "Ideal", "data": [100, 85, 70, 55, 40, 25, 10, 0] },
+    { "name": "Actual", "data": [100, 88, 76, 62, 50, 38, 22, 8] }
+  ],
+  "headcount": [42, 48, 52, 58, 64, 71, 78, 84, 92, 98, 104, 112],
+  "priceLine": [42100, 41800, 42500, 43200, 42800, 44100, 45800, 45200, 46700, 47200, 48100, 48900],
+  "allocation": [40, 25, 15, 12, 8],
+  "allocationLabels": ["BTC", "ETH", "USDT", "SOL", "Other"]
+}

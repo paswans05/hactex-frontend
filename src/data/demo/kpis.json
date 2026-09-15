@@ -1,0 +1,22 @@
+{
+  "$schema": "atelier-demo/v1",
+  "note": "Reference demo data — values are inlined into pages as data-at-chart-series. spec 13 §6",
+  "sales": {
+    "totalRevenue": { "value": 284920, "display": "$284,920", "delta": 12.4, "dir": "up" },
+    "orders": { "value": 1847, "display": "1,847", "delta": 8.2, "dir": "up" },
+    "aov": { "value": 154.31, "display": "$154.31", "delta": -2.1, "dir": "down" },
+    "conversion": { "value": 3.8, "display": "3.8%", "delta": 0.6, "dir": "up" }
+  },
+  "analytics": {
+    "sessions": { "value": 124800, "display": "124,800", "delta": 14.2, "dir": "up" },
+    "bounce": { "value": 38.4, "display": "38.4%", "delta": -3.1, "dir": "up" },
+    "avgSession": { "value": "3m 42s", "display": "3m 42s", "delta": 5.4, "dir": "up" },
+    "goalRate": { "value": 4.7, "display": "4.7%", "delta": 0.9, "dir": "up" }
+  },
+  "ecommerce": {
+    "gmv": { "value": 489200, "display": "$489,200", "delta": 18.6, "dir": "up" },
+    "units": { "value": 3284, "display": "3,284", "delta": 11.2, "dir": "up" },
+    "refundRate": { "value": 2.1, "display": "2.1%", "delta": -0.4, "dir": "up" },
+    "returning": { "value": 42.8, "display": "42.8%", "delta": 3.2, "dir": "up" }
+  }
+}

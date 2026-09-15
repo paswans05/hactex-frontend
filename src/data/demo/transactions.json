@@ -1,0 +1,12 @@
+{
+  "$schema": "atelier-demo/v1",
+  "transactions": [
+    { "id": "TX-10241", "party": "Jacob Smith", "amount": 249.0, "date": "2025-11-06", "status": "paid", "method": "Visa •• 4242" },
+    { "id": "TX-10240", "party": "Emma Lee", "amount": 399.0, "date": "2025-11-05", "status": "pending", "method": "PayPal" },
+    { "id": "TX-10239", "party": "Olivia Brown", "amount": 199.0, "date": "2025-11-04", "status": "refunded", "method": "Mastercard •• 8810" },
+    { "id": "TX-10238", "party": "Noah Wilson", "amount": 149.0, "date": "2025-11-04", "status": "paid", "method": "Visa •• 1192" },
+    { "id": "TX-10237", "party": "Ava Martinez", "amount": 320.0, "date": "2025-11-03", "status": "paid", "method": "Apple Pay" },
+    { "id": "TX-10236", "party": "Liam Garcia", "amount": 89.0, "date": "2025-11-03", "status": "failed", "method": "Visa •• 7766" },
+    { "id": "TX-10235", "party": "Sophia Chen", "amount": 189.0, "date": "2025-11-02", "status": "paid", "method": "Bank transfer" }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "$schema": "atelier-demo/v1",
+  "products": [
+    { "id": 1, "name": "Wireless Headphones", "sku": "AUD-2401", "price": 249.0, "stock": 142, "category": "Electronics", "rating": 4.6, "image": "audio" },
+    { "id": 2, "name": "Smart Watch Pro", "sku": "WRW-1108", "price": 399.0, "stock": 78, "category": "Electronics", "rating": 4.8, "image": "watch" },
+    { "id": 3, "name": "Running Sneakers", "sku": "FTW-3309", "price": 199.0, "stock": 220, "category": "Apparel", "rating": 4.4, "image": "sneaker" },
+    { "id": 4, "name": "Ceramic Coffee Maker", "sku": "HOM-7720", "price": 149.0, "stock": 64, "category": "Home", "rating": 4.5, "image": "coffee" },
+    { "id": 5, "name": "Mechanical Keyboard", "sku": "AUD-2204", "price": 189.0, "stock": 96, "category": "Electronics", "rating": 4.7, "image": "keyboard" },
+    { "id": 6, "name": "Linen Throw Blanket", "sku": "HOM-4412", "price": 89.0, "stock": 180, "category": "Home", "rating": 4.3, "image": "blanket" },
+    { "id": 7, "name": "Leather Crossbody Bag", "sku": "APP-8810", "price": 320.0, "stock": 42, "category": "Apparel", "rating": 4.9, "image": "bag" },
+    { "id": 8, "name": "Stainless Water Bottle", "sku": "HOM-6644", "price": 39.0, "stock": 410, "category": "Home", "rating": 4.2, "image": "bottle" }
+  ]
+}

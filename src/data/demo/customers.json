@@ -1,0 +1,13 @@
+{
+  "$schema": "atelier-demo/v1",
+  "customers": [
+    { "id": 1, "name": "Jacob Smith", "email": "jacob@mail.com", "orders": 24, "spent": 4280.0, "status": "active", "initials": "JS" },
+    { "id": 2, "name": "Emma Lee", "email": "emma@mail.com", "orders": 18, "spent": 3120.5, "status": "active", "initials": "EM" },
+    { "id": 3, "name": "Olivia Brown", "email": "o.brown@mail.com", "orders": 32, "spent": 6840.0, "status": "vip", "initials": "OB" },
+    { "id": 4, "name": "Noah Wilson", "email": "noah.w@mail.com", "orders": 7, "spent": 980.0, "status": "active", "initials": "NW" },
+    { "id": 5, "name": "Ava Martinez", "email": "ava.m@mail.com", "orders": 41, "spent": 8920.5, "status": "vip", "initials": "AM" },
+    { "id": 6, "name": "Liam Garcia", "email": "liam.g@mail.com", "orders": 3, "spent": 240.0, "status": "inactive", "initials": "LG" },
+    { "id": 7, "name": "Sophia Chen", "email": "sophia.c@mail.com", "orders": 19, "spent": 3460.0, "status": "active", "initials": "SC" },
+    { "id": 8, "name": "Mason Kumar", "email": "mason.k@mail.com", "orders": 28, "spent": 5240.0, "status": "active", "initials": "MK" }
+  ]
+}
