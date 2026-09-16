@@ -2,7 +2,7 @@
  * Multi-Company / Multi-Tenant API Service
  */
 import { apiClient } from '../client';
-import type { ApiResponse, Company, CompanySetupPayload, AuthResult } from '../types';
+import type { ApiResponse, Company, CompanySetupPayload, AuthResult, CompanyCompletionInfo } from '../types';
 
 export const companyService = {
   /**
@@ -25,6 +25,13 @@ export const companyService = {
    */
   async getCurrentCompany(): Promise<ApiResponse<Company>> {
     return apiClient.get<Company>('/companies/current');
+  },
+
+  /**
+   * Fetch company profile completion statistics.
+   */
+  async getCompletion(): Promise<ApiResponse<CompanyCompletionInfo>> {
+    return apiClient.get<CompanyCompletionInfo>('/companies/completion');
   },
 
   /**

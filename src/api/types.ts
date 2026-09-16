@@ -51,8 +51,19 @@ export interface Company {
   timezone?: string | null;
   currency?: string | null;
   status: 'ACTIVE' | 'INACTIVE' | 'SUSPENDED';
+  completion_percentage?: number;
+  missing_fields?: string[];
+  completion?: CompanyCompletionInfo;
   created_at?: string | null;
   updated_at?: string | null;
+}
+
+export interface CompanyCompletionInfo {
+  percentage: number;
+  completed_fields: string[];
+  missing_fields: string[];
+  total_fields: number;
+  has_company?: boolean;
 }
 
 export interface Role {
