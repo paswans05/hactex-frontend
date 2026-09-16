@@ -105,7 +105,7 @@ export interface CompanySetupPayload {
     timezone?: string;
     currency?: string;
   };
-  owner: {
+  owner?: {
     name: string;
     email: string;
     password: string;

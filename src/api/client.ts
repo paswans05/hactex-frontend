@@ -96,7 +96,15 @@ class ApiClient {
       }
 
       if (!response.ok) {
-        const errorMessage = responseData.error || responseData.message || `Request failed with status ${response.status}`;
+        let errorMessage = responseData.message || responseData.error || `Request failed with status ${response.status}`;
+        if (responseData.details && Array.isArray(responseData.details) && responseData.details.length > 0) {
+          const first = responseData.details[0];
+          if (first.message) {
+            errorMessage = first.field && first.field !== 'body'
+              ? `${first.field}: ${first.message}`
+              : first.message;
+          }
+        }
         
         // Handle token expiration / unauthorized
         if (response.status === 401) {
@@ -157,4 +165,4 @@ class ApiClient {
   }
 }
 
-export const apiClient = new ApiClient('/api');
+export const apiClient = new ApiClient((import.meta.env.VITE_API_URL as string) || '/api/v1');

@@ -9,14 +9,14 @@ export class AuthService {
    * Log in user with email/username and password.
    */
   async login(credentials: LoginPayload): Promise<AuthResult> {
-    const res = await apiClient.post<AuthResult>('/auth/login', credentials, { skipAuth: true });
+    const res = await apiClient.post<any>('/auth/login', credentials, { skipAuth: true });
     
-    // Support both standardized { data: { token, user } } and top-level { token, user }
-    const token = res.data?.token || res.token;
-    const user = res.data?.user || res.user;
+    // Support access_token, token, and nested data structures from FastAPI & standards
+    const token = (res as any).access_token || res.data?.token || res.token || (res.data as any)?.access_token;
+    const user = res.data?.user || res.user || (res.data as any) || res;
 
-    if (!token || !user) {
-      throw new Error('Malformed login response: token or user missing');
+    if (!token) {
+      throw new Error('Malformed login response: access token missing');
     }
 
     return { token, user };
@@ -26,13 +26,14 @@ export class AuthService {
    * Register a new user in the system.
    */
   async register(payload: RegisterPayload): Promise<AuthResult> {
-    const res = await apiClient.post<AuthResult>('/auth/register', payload, { skipAuth: true });
+    const res = await apiClient.post<any>('/auth/register', payload, { skipAuth: true });
 
-    const token = res.data?.token || res.token;
-    const user = res.data?.user || res.user;
+    const token = (res as any).access_token || res.data?.token || res.token || (res.data as any)?.access_token;
+    const user = res.data?.user || res.user || (res.data as any) || res;
 
-    if (!token || !user) {
-      throw new Error('Malformed registration response: token or user missing');
+    if (!token) {
+      // If token not directly returned, perform immediate login
+      return await this.login({ email: payload.email, password: payload.password });
     }
 
     return { token, user };
@@ -42,8 +43,8 @@ export class AuthService {
    * Retrieve active user profile.
    */
   async getProfile(): Promise<User> {
-    const res = await apiClient.get<{ user: User }>('/auth/me');
-    const user = res.data?.user || res.user;
+    const res = await apiClient.get<any>('/users/me');
+    const user = res.data?.user || res.user || res.data || res;
 
     if (!user) {
       throw new Error('User profile missing in response');

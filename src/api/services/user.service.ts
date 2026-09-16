@@ -22,7 +22,18 @@ export const userService = {
 
     const qs = query.toString();
     const endpoint = `/users${qs ? `?${qs}` : ''}`;
-    return apiClient.get<User[]>(endpoint);
+    const res = await apiClient.get<any>(endpoint);
+    
+    // Normalize paginated items array if present
+    if (res.success && res.data) {
+      const items = Array.isArray(res.data) ? res.data : (res.data.items || []);
+      return {
+        ...res,
+        data: items,
+        total: res.data.total ?? items.length,
+      };
+    }
+    return res;
   },
 
   /**
