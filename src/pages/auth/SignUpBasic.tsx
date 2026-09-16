@@ -127,7 +127,7 @@ export default function SignUpBasic(): React.JSX.Element {
       <SocialRow caption="or sign up with" />
 
       <p className="at-auth__foot">
-        Already have an account? <Link to="/auth/sign-in-basic" className="at-text-strong">Sign in</Link>
+        Already have an account? <Link to="/auth/login" className="at-text-strong">Sign in</Link>
       </p>
     </div>
   );
