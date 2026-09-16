@@ -19,7 +19,7 @@ export default function SignInBasic(): React.JSX.Element {
 
   useEffect(() => {
     if (isAuthenticated()) {
-      navigate('/dashboards/sales', { replace: true });
+      navigate('/dashboards', { replace: true });
     }
   }, [navigate]);
 
@@ -31,7 +31,7 @@ export default function SignInBasic(): React.JSX.Element {
     try {
       const res = await login(email, password);
       if (res.success) {
-        navigate('/dashboards/sales', { replace: true });
+        navigate('/dashboards', { replace: true });
       } else {
         setError(res.error || 'Invalid email/username or password.');
       }

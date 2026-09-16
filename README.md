@@ -36,7 +36,7 @@ From this folder (`template/`):
 
 ## Where you land
 
-The entry route redirects to `/dashboards/sales`. If the first thing you see is the Sales dashboard, everything is wired correctly.
+The entry route redirects to `/dashboards`. If the first thing you see is the Sales dashboard, everything is wired correctly.
 
 ## Documentation
 

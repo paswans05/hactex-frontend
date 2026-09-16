@@ -6,6 +6,13 @@ import type { ApiResponse, Company, CompanySetupPayload, AuthResult } from '../t
 
 export const companyService = {
   /**
+   * Auto-generate a unique 10-digit mixed alphanumeric company key.
+   */
+  async generateCompanyCode(): Promise<ApiResponse<{ code: string; company_code: string }>> {
+    return apiClient.get<{ code: string; company_code: string }>('/companies/generate-code');
+  },
+
+  /**
    * Setup brand-new company along with its initial Owner/Admin.
    * Public onboarding flow.
    */

@@ -2,9 +2,9 @@
  * Hactex — Company Profile Setup Page (/company/setup)
  * Configures the organization / tenant profile.
  */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { Building2, ArrowRight, AlertCircle, CheckCircle2, Sparkles } from 'lucide-react';
+import { Building2, ArrowRight, AlertCircle, CheckCircle2, Sparkles, RefreshCw, KeyRound } from 'lucide-react';
 import { companyService } from '../../api';
 import { setAuth, getUser, getToken } from '../../lib/auth';
 import { useCompany } from '../../context/CompanyContext';
@@ -17,7 +17,19 @@ export const CompanySetup: React.FC = () => {
   // Company Form State
   const [companyName, setCompanyName] = useState('');
   const [legalName, setLegalName] = useState('');
-  const [companyCode, setCompanyCode] = useState('');
+  const generateRandomKey = (): string => {
+    const letters = 'ABCDEFGHJKLMNPQRSTUVWXYZ';
+    const digits = '23456789';
+    const all = letters + digits;
+    let res = '';
+    for (let i = 0; i < 6; i++) res += all.charAt(Math.floor(Math.random() * all.length));
+    for (let i = 0; i < 2; i++) res += letters.charAt(Math.floor(Math.random() * letters.length));
+    for (let i = 0; i < 2; i++) res += digits.charAt(Math.floor(Math.random() * digits.length));
+    return res.split('').sort(() => 0.5 - Math.random()).join('');
+  };
+
+  const [companyCode, setCompanyCode] = useState(generateRandomKey());
+  const [isGeneratingKey, setIsGeneratingKey] = useState(false);
   const [companyEmail, setCompanyEmail] = useState(currentUser?.email || '');
   const [companyPhone, setCompanyPhone] = useState(currentUser?.phone || '');
   const [address, setAddress] = useState('');
@@ -32,16 +44,28 @@ export const CompanySetup: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [successMsg, setSuccessMsg] = useState<string | null>(null);
 
-  // Auto-generate company code suggestion based on name
-  const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const val = e.target.value;
-    setCompanyName(val);
-    if (!companyCode || companyCode.startsWith(val.slice(0, 3).toUpperCase())) {
-      const codeSuggestion = val.replace(/[^a-zA-Z0-9]/g, '').slice(0, 6).toUpperCase();
-      if (codeSuggestion.length >= 3) {
-        setCompanyCode(codeSuggestion + '01');
+  const regenerateKey = async () => {
+    try {
+      setIsGeneratingKey(true);
+      const res = await companyService.generateCompanyCode();
+      if (res.success && res.data?.code) {
+        setCompanyCode(res.data.code);
+      } else {
+        setCompanyCode(generateRandomKey());
       }
+    } catch {
+      setCompanyCode(generateRandomKey());
+    } finally {
+      setIsGeneratingKey(false);
     }
+  };
+
+  useEffect(() => {
+    regenerateKey();
+  }, []);
+
+  const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCompanyName(e.target.value);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -92,7 +116,7 @@ export const CompanySetup: React.FC = () => {
         }
 
         setTimeout(() => {
-          navigate('/dashboards/sales', { replace: true });
+          navigate('/dashboards', { replace: true });
         }, 1000);
       } else {
         setError(res.error || 'Failed to setup company. Please verify details and try again.');
@@ -179,17 +203,38 @@ export const CompanySetup: React.FC = () => {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">
-                    Company Code *
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    placeholder="APEX01"
-                    value={companyCode}
-                    onChange={(e) => setCompanyCode(e.target.value.toUpperCase())}
-                    className="w-full px-3.5 py-2.5 rounded-lg border-2 border-slate-300 focus:border-emerald-600 focus:outline-none font-bold uppercase text-slate-900 text-sm bg-slate-50/50"
-                  />
+                  <div className="flex items-center justify-between mb-1">
+                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-700">
+                      Unique Company Key (10-Digit) *
+                    </label>
+                    <button
+                      type="button"
+                      onClick={regenerateKey}
+                      disabled={isGeneratingKey}
+                      className="inline-flex items-center gap-1 text-[11px] font-bold text-emerald-700 hover:text-emerald-800 transition-colors cursor-pointer"
+                      title="Generate fresh 10-digit unique key"
+                    >
+                      <RefreshCw className={`w-3 h-3 ${isGeneratingKey ? 'animate-spin' : ''}`} />
+                      Regenerate
+                    </button>
+                  </div>
+                  <div className="relative">
+                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+                      <KeyRound className="w-4 h-4" />
+                    </div>
+                    <input
+                      type="text"
+                      required
+                      maxLength={10}
+                      placeholder="e.g. H7K9P2X4M8"
+                      value={companyCode}
+                      onChange={(e) => setCompanyCode(e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 10))}
+                      className="w-full pl-9 pr-3.5 py-2.5 rounded-lg border-2 border-slate-300 focus:border-emerald-600 focus:outline-none font-mono font-bold tracking-wider uppercase text-slate-900 text-sm bg-slate-50/50"
+                    />
+                  </div>
+                  <p className="mt-1 text-[11px] text-slate-500 font-medium">
+                    Auto-generated 10-digit mixed alphanumeric key for workspace isolation.
+                  </p>
                 </div>
                 <div>
                   <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">
@@ -311,7 +356,7 @@ export const CompanySetup: React.FC = () => {
           <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="text-xs text-slate-500 font-medium">
               Want to skip for now?{' '}
-              <Link to="/dashboards/sales" className="font-bold text-emerald-700 hover:underline">
+              <Link to="/dashboards" className="font-bold text-emerald-700 hover:underline">
                 Go to Dashboard
               </Link>
             </div>

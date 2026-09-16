@@ -6,7 +6,7 @@
  * routes without hand-written <Route> entries.
  *
  * File-name → slug convention (matches the manifest `slug` field):
- *   ./dashboards/Sales.tsx        → dashboards/sales
+ *   ./dashboards.tsx        → dashboards/sales
  *   ./auth/SignInBasic.tsx        → auth/sign-in-basic
  *   ./ecommerce/ProductDetails.tsx→ ecommerce/product-details
  *
